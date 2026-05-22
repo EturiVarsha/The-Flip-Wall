@@ -326,6 +326,43 @@
     .col-lime    { color: #65a30d; }
     .col-sage    { color: #4ade80; }
 
+
+    /* ── ORANGE / YELLOW / PINK gradients — India ground reality ── */
+    .gbo0 { background: linear-gradient(135deg,#3d1200,#5c1e00); }
+    .gbo1 { background: linear-gradient(135deg,#4a1500,#6b2200); }
+    .gbo2 { background: linear-gradient(135deg,#2e0e00,#4a1800); }
+    .gbo3 { background: linear-gradient(135deg,#3a1000,#5a1a00); }
+    .gbo4 { background: linear-gradient(135deg,#501800,#701f00); }
+
+    .gbyo0 { background: linear-gradient(135deg,#2a2200,#3d3200); }
+    .gbyo1 { background: linear-gradient(135deg,#1e1a00,#302a00); }
+    .gbyo2 { background: linear-gradient(135deg,#352a00,#4a3800); }
+    .gbyo3 { background: linear-gradient(135deg,#281e00,#403200); }
+    .gbyo4 { background: linear-gradient(135deg,#221c00,#352800); }
+
+    .gbp0 { background: linear-gradient(135deg,#3d0a28,#5c1535); }
+    .gbp1 { background: linear-gradient(135deg,#2e0820,#4a1230); }
+    .gbp2 { background: linear-gradient(135deg,#4a0d30,#6b1540); }
+    .gbp3 { background: linear-gradient(135deg,#350a25,#50102e); }
+    .gbp4 { background: linear-gradient(135deg,#280818,#3d1025); }
+
+    /* orange/yellow/pink tag, reveal, cta */
+    .tag-saffron  { background: rgba(234,88,12,0.1);  color: #9a3e00; border: 1px solid rgba(234,88,12,0.25); }
+    .tag-marigold { background: rgba(202,138,4,0.1);  color: #854d0e; border: 1px solid rgba(202,138,4,0.25); }
+    .tag-rose     { background: rgba(219,39,119,0.1); color: #9d174d; border: 1px solid rgba(219,39,119,0.25); }
+    .reveal-saffron  { background: linear-gradient(135deg,#3d1200,#501800); }
+    .reveal-marigold { background: linear-gradient(135deg,#2a2200,#3a2e00); }
+    .reveal-rose     { background: linear-gradient(135deg,#3d0a28,#4a0d30); }
+    .cta-saffron  { background: linear-gradient(90deg,#ea580c,#c2440a); }
+    .cta-marigold { background: linear-gradient(90deg,#ca8a04,#a16207); }
+    .cta-rose     { background: linear-gradient(90deg,#db2777,#be185d); }
+
+    /* India region symbol colors */
+    .col-saffron  { color: #f97316; }
+    .col-marigold { color: #eab308; }
+    .col-rose     { color: #f472b6; }
+    .col-tangerine{ color: #fb923c; }
+
     /* ── WALL FOOTER ── */
     .wall-bottom {
       margin-top:12px;
@@ -444,7 +481,7 @@
     </p>
     <div class="hero-stats">
       <div class="h-stat">
-        <strong id="wall-count">9</strong>
+        <strong id="wall-count">14</strong>
         <span>walls live</span>
       </div>
       <div class="h-stat">
@@ -495,6 +532,158 @@
 const WALLS = [
 
   /* ── ADD NEW WALLS AT THE TOP ── */
+
+  /* ── WALL 14: West India — Maharashtra · Gujarat · Goa ── */
+  {
+    tag:         "West India · Ground Reality",
+    tagColor:    "tag-rose",
+    date:        "22 May 2026",
+    teaser:      "Mumbai is waiting. Gujarat is sweating. Goa is ready.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-rose",
+    ctaColor:    "cta-rose",
+    reveal:      "<strong>The west is a split screen.</strong> Vidarbha is recording 47°C. Mumbai gets pre-monsoon showers by June 5. Gujarat waits the longest — monsoon won't arrive till June 18-25. IPL ends May 31. Cricket before rain.",
+    tiles: [
+      { sym:"△",  cat:"Vidarbha",  catColor:"col-rose",     word:"47°C Wardha",       gradient:"gbp0" },
+      { sym:"∼",  cat:"Mumbai",    catColor:"col-saffron",  word:"rain by June 5",    gradient:"gbo3" },
+      { sym:"⊘",  cat:"Gujarat",   catColor:"col-marigold", word:"waits till June 25",gradient:"gbyo2"},
+      { sym:"✦",  cat:"IPL",       catColor:"col-rose",     word:"ends May 31",       gradient:"gbp2" },
+      { sym:"◈",  cat:"Konkan",    catColor:"col-saffron",  word:"moisture rising",   gradient:"gbo1" },
+      { sym:"⌇",  cat:"Goa",       catColor:"col-marigold", word:"monsoon June 7-10", gradient:"gbyo4"},
+      { sym:"⬡",  cat:"power",     catColor:"col-rose",     word:"grids stressed",    gradient:"gbp1" },
+      { sym:"∞",  cat:"heat",      catColor:"col-saffron",  word:"orange alert out",  gradient:"gbo4" },
+      { sym:"λ",  cat:"Fadnavis",  catColor:"col-marigold", word:"CM holds ground",   gradient:"gbyo0"},
+      { sym:"π",  cat:"Wankhede",  catColor:"col-rose",     word:"MI at home",        gradient:"gbp3" },
+      { sym:"⟡",  cat:"water",     catColor:"col-saffron",  word:"dams at 28%",       gradient:"gbo2" },
+      { sym:"Σ",  cat:"trade",     catColor:"col-marigold", word:"ports still busy",  gradient:"gbyo3"},
+      { sym:"Ω",  cat:"GIFT city", catColor:"col-rose",     word:"Gujarat tech hub",  gradient:"gbp4" },
+      { sym:"⊞",  cat:"Pune",      catColor:"col-saffron",  word:"metro expanding",   gradient:"gbo0" },
+      { sym:"∴",  cat:"monsoon",   catColor:"col-marigold", word:"the wait is real",  gradient:"gbyo1"},
+      { sym:"◉",  cat:"west",      catColor:"col-rose",     word:"holding its breath",gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 13: South India — Kerala · Karnataka · TN · AP · Telangana ── */
+  {
+    tag:         "South India · Ground Reality",
+    tagColor:    "tag-marigold",
+    date:        "22 May 2026",
+    teaser:      "The south is wet. The north is burning. Same country.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-marigold",
+    ctaColor:    "cta-marigold",
+    reveal:      "<strong>Kerala gets the monsoon first — May 26.</strong> Tamil Nadu already seeing 16cm in a day. While north India bakes above 46°C, the south is counting rain. Kerala just voted. CPI(M) lost. DMK and Congress are fighting. The south is never quiet.",
+    tiles: [
+      { sym:"∼",  cat:"Kerala",    catColor:"col-marigold", word:"monsoon May 26",    gradient:"gbyo0"},
+      { sym:"△",  cat:"TN",        catColor:"col-saffron",  word:"16cm in a day",     gradient:"gbo1" },
+      { sym:"≋",  cat:"rain",      catColor:"col-marigold", word:"south gets first",  gradient:"gbyo3"},
+      { sym:"◉",  cat:"Kerala",    catColor:"col-rose",     word:"CPI(M) lost",       gradient:"gbp0" },
+      { sym:"⟡",  cat:"DMK",       catColor:"col-saffron",  word:"vs Congress",       gradient:"gbo3" },
+      { sym:"⊘",  cat:"NEET",      catColor:"col-marigold", word:"paper leak probe",  gradient:"gbyo2"},
+      { sym:"⬡",  cat:"AP",        catColor:"col-rose",     word:"more babies? Naidu",gradient:"gbp3" },
+      { sym:"∞",  cat:"Karnataka", catColor:"col-saffron",  word:"squalls 70kmph",    gradient:"gbo2" },
+      { sym:"π",  cat:"Telangana", catColor:"col-marigold", word:"heatwave isolated", gradient:"gbyo4"},
+      { sym:"⟁",  cat:"tech",      catColor:"col-rose",     word:"Gates in AP",       gradient:"gbp1" },
+      { sym:"α",  cat:"Andhra",    catColor:"col-saffron",  word:"3rd child cash",    gradient:"gbo4" },
+      { sym:"Δ",  cat:"Goa",       catColor:"col-marigold", word:"monsoon loading",   gradient:"gbyo1"},
+      { sym:"⌬",  cat:"coast",     catColor:"col-rose",     word:"winds pick up",     gradient:"gbp4" },
+      { sym:"✦",  cat:"politics",  catColor:"col-saffron",  word:"south fights hard", gradient:"gbo0" },
+      { sym:"λ",  cat:"contrast",  catColor:"col-marigold", word:"north burns south", gradient:"gbyo3"},
+      { sym:"◈",  cat:"India",     catColor:"col-rose",     word:"two worlds one map",gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 12: Middle India — MP · Chhattisgarh · Odisha · Bihar · WB ── */
+  {
+    tag:         "Middle India · Ground Reality",
+    tagColor:    "tag-saffron",
+    date:        "22 May 2026",
+    teaser:      "Caught between baking heat and gathering storms.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-saffron",
+    ctaColor:    "cta-saffron",
+    reveal:      "<strong>Middle India is the collision zone.</strong> Khajuraho hit 47.4°C. Bihar is under orange rain alert. Odisha sees hot days and storm nights. West Bengal is getting squalls at 60kmph. The monsoon reaches here mid-June. Until then — endure.",
+    tiles: [
+      { sym:"☀",  cat:"MP",        catColor:"col-saffron",  word:"Khajuraho 47.4°C",  gradient:"gbo0" },
+      { sym:"△",  cat:"heat",      catColor:"col-marigold", word:"central belt bakes", gradient:"gbyo2"},
+      { sym:"∼",  cat:"Bihar",     catColor:"col-rose",     word:"orange rain alert", gradient:"gbp1" },
+      { sym:"≋",  cat:"Bengal",    catColor:"col-saffron",  word:"squalls 60kmph",    gradient:"gbo3" },
+      { sym:"⊘",  cat:"Odisha",    catColor:"col-marigold", word:"hot days, storm night",gradient:"gbyo4"},
+      { sym:"◈",  cat:"Jharkhand", catColor:"col-rose",     word:"in between worlds", gradient:"gbp3" },
+      { sym:"⌇",  cat:"hail",      catColor:"col-saffron",  word:"hailstorms possible",gradient:"gbo1"},
+      { sym:"∞",  cat:"Chhattisgarh",catColor:"col-marigold",word:"heatwave alert",   gradient:"gbyo0"},
+      { sym:"⬡",  cat:"monsoon",   catColor:"col-rose",     word:"June 10-18 here",   gradient:"gbp4" },
+      { sym:"π",  cat:"Vidarbha",  catColor:"col-saffron",  word:"severe heatwave",   gradient:"gbo4" },
+      { sym:"⟡",  cat:"water",     catColor:"col-marigold", word:"rivers watching",   gradient:"gbyo1"},
+      { sym:"λ",  cat:"farmers",   catColor:"col-rose",     word:"praying for rain",  gradient:"gbp0" },
+      { sym:"Σ",  cat:"power",     catColor:"col-saffron",  word:"cuts everywhere",   gradient:"gbo2" },
+      { sym:"Ω",  cat:"children",  catColor:"col-marigold", word:"schools half-shut", gradient:"gbyo3"},
+      { sym:"∴",  cat:"wait",      catColor:"col-rose",     word:"June can't come fast",gradient:"gbp2"},
+      { sym:"◉",  cat:"middle",    catColor:"col-saffron",  word:"India holds on",    gradient:"gbo0" },
+    ]
+  },
+
+  /* ── WALL 11: North-East India — Assam · Manipur · Nagaland · Arunachal ── */
+  {
+    tag:         "North-East · Ground Reality",
+    tagColor:    "tag-rose",
+    date:        "22 May 2026",
+    teaser:      "While the north bakes, the north-east braces.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-rose",
+    ctaColor:    "cta-rose",
+    reveal:      "<strong>The north-east is a different India entirely.</strong> Manipur's conflict deepens. Assam is on flood watch. Nagaland's highway has collapsed. Arunachal is under heavy rain alert. Eight states. Eight stories. Almost no headlines.",
+    tiles: [
+      { sym:"∼",  cat:"Assam",     catColor:"col-rose",     word:"flood watch on",    gradient:"gbp0" },
+      { sym:"⟁",  cat:"Manipur",   catColor:"col-saffron",  word:"conflict festers",  gradient:"gbo2" },
+      { sym:"◌",  cat:"Nagaland",  catColor:"col-marigold", word:"NH-2 collapsed",    gradient:"gbyo3"},
+      { sym:"△",  cat:"rain",      catColor:"col-rose",     word:"very heavy alerts", gradient:"gbp2" },
+      { sym:"⊘",  cat:"Arunachal", catColor:"col-saffron",  word:"landslide risk",    gradient:"gbo4" },
+      { sym:"⌇",  cat:"Meghalaya", catColor:"col-marigold", word:"thunder lightning", gradient:"gbyo1"},
+      { sym:"≋",  cat:"Brahmaputra",catColor:"col-rose",    word:"watching levels",   gradient:"gbp3" },
+      { sym:"⬡",  cat:"trucks",    catColor:"col-saffron",  word:"100+ stranded",     gradient:"gbo1" },
+      { sym:"π",  cat:"Tripura",   catColor:"col-marigold", word:"pre-monsoon active",gradient:"gbyo4"},
+      { sym:"✦",  cat:"Sikkim",    catColor:"col-rose",     word:"army post at risk",  gradient:"gbp1" },
+      { sym:"∞",  cat:"Mizoram",   catColor:"col-saffron",  word:"rain warnings live",gradient:"gbo3" },
+      { sym:"α",  cat:"conflict",  catColor:"col-marigold", word:"Manipur, 3 years",  gradient:"gbyo2"},
+      { sym:"λ",  cat:"relief",    catColor:"col-rose",     word:"camps being prepped",gradient:"gbp4"},
+      { sym:"Σ",  cat:"ignored",   catColor:"col-saffron",  word:"no prime time",     gradient:"gbo0" },
+      { sym:"⟰",  cat:"resilient", catColor:"col-marigold", word:"they always cope",  gradient:"gbyo0"},
+      { sym:"◉",  cat:"north-east",catColor:"col-rose",     word:"still standing",    gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 10: North India — Delhi · Punjab · Haryana · UP · Rajasthan ── */
+  {
+    tag:         "North India · Ground Reality",
+    tagColor:    "tag-saffron",
+    date:        "22 May 2026",
+    teaser:      "48°C. No rain. No end in sight.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-saffron",
+    ctaColor:    "cta-saffron",
+    reveal:      "<strong>Banda, UP recorded 48°C. 16 cities crossed 46°C in one day.</strong> Nights are 5°C above normal. The monsoon won't reach Delhi until June 25-30. That's 35 more days. The north is not just hot — it is exhausted.",
+    tiles: [
+      { sym:"☀",  cat:"UP",        catColor:"col-saffron",  word:"Banda hit 48°C",    gradient:"gbo0" },
+      { sym:"△",  cat:"cities",    catColor:"col-marigold", word:"16 above 46°C",     gradient:"gbyo2"},
+      { sym:"∅",  cat:"nights",    catColor:"col-rose",     word:"+5°C above normal", gradient:"gbp1" },
+      { sym:"⊘",  cat:"Delhi",     catColor:"col-saffron",  word:"45°C this week",    gradient:"gbo3" },
+      { sym:"≋",  cat:"Punjab",    catColor:"col-marigold", word:"yellow alert",      gradient:"gbyo0"},
+      { sym:"⌇",  cat:"Haryana",   catColor:"col-rose",     word:"no relief till 25", gradient:"gbp3" },
+      { sym:"◈",  cat:"Rajasthan", catColor:"col-saffron",  word:"worst hit, hottest",gradient:"gbo2" },
+      { sym:"∞",  cat:"winds",     catColor:"col-marigold", word:"from Balochistan",  gradient:"gbyo4"},
+      { sym:"π",  cat:"sleep",     catColor:"col-rose",     word:"impossible at night",gradient:"gbp0"},
+      { sym:"⟡",  cat:"monsoon",   catColor:"col-saffron",  word:"Delhi June 25-30",  gradient:"gbo4" },
+      { sym:"λ",  cat:"wait",      catColor:"col-marigold", word:"35 more days",      gradient:"gbyo1"},
+      { sym:"✦",  cat:"workers",   catColor:"col-rose",     word:"outdoors suffering", gradient:"gbp4"},
+      { sym:"Δ",  cat:"J&K",       catColor:"col-saffron",  word:"isolated rain",     gradient:"gbo1" },
+      { sym:"Σ",  cat:"HP",        catColor:"col-marigold", word:"hailstorms likely", gradient:"gbyo3"},
+      { sym:"⟰",  cat:"relief",    catColor:"col-rose",     word:"late May showers?", gradient:"gbp2" },
+      { sym:"◉",  cat:"north",     catColor:"col-saffron",  word:"India is baking",   gradient:"gbo0" },
+    ]
+  },
+
+
 
   /* ── WALL 9: Modi × Italy + Tour Results ── */
   {
