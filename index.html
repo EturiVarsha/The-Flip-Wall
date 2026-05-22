@@ -558,10 +558,51 @@
     footer a { color:var(--maroon); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width:480px) {
-      .nav-right .hide-mob { display:none; }
-      .feed { padding:2.5rem 4%; gap:3.5rem; }
-      .hero-h1 { letter-spacing:-0.03em; }
+
+    @media (max-width: 768px) {
+      .wall { padding: 1.2rem 1rem; border-radius: 14px; }
+      .feed { padding: 2rem 4%; gap: 2rem; }
+      .hero { padding: calc(var(--nav-h) + 2rem) 4% 2rem; min-height: 42vh; }
+      .hero-h1 { font-size: clamp(2.4rem, 10vw, 4rem); margin-bottom: 1rem; }
+      .hero-sub { font-size: 0.72rem; }
+      .hero-stats { gap: 1.2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+      .h-stat strong { font-size: 1.2rem; }
+      nav { padding: 0 4%; }
+      .nav-right .hide-mob { display: none; }
+      .tile-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .t-back .t-word { font-size: clamp(9px, 2.8vw, 13px); }
+      .t-front .t-sym { font-size: clamp(18px, 5.5vw, 26px); }
+      .t-front .t-cat { font-size: clamp(6px, 1.6vw, 8px); }
+      .wall-teaser { font-size: clamp(1rem, 4vw, 1.3rem); }
+      .wall-hint { font-size: 0.58rem; }
+      .w-progress { font-size: 0.58rem; }
+      .w-reset { font-size: 0.58rem; padding: 4px 10px; }
+      .w-reveal { padding: 14px; }
+      .w-reveal p { font-size: 0.68rem; line-height: 1.7; }
+      .w-reveal a { font-size: 0.72rem; padding: 8px 14px; }
+      .wall-meta { gap: 0.5rem; margin-bottom: 0.9rem; }
+      .wall-tag { font-size: 0.56rem; padding: 3px 9px; }
+      .wall-date { font-size: 0.54rem; }
+      .wall-bottom { margin-top: 10px; }
+      .wall-divider { margin-top: 2rem; }
+      .about-strip { padding: 2rem 4%; }
+      footer { padding: 2rem 4%; }
+      footer p { font-size: 0.6rem; }
+      .blob-1 { width: 260px; height: 260px; filter: blur(50px); }
+      .blob-2 { width: 220px; height: 220px; filter: blur(50px); }
+      .blob-3 { width: 300px; height: 300px; filter: blur(60px); }
+      .blob-4 { width: 200px; height: 200px; filter: blur(50px); }
+      .blob-5 { width: 240px; height: 240px; filter: blur(50px); }
+      .t-wrap { min-height: 70px; }
+    }
+
+    @media (max-width: 380px) {
+      .tile-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+      .wall { padding: 1rem 0.85rem; }
+      .feed { padding: 1.5rem 3%; gap: 1.5rem; }
+      .hero-h1 { font-size: 2.2rem; }
+      .t-back .t-word { font-size: 9px; }
+      .t-front .t-sym { font-size: 18px; }
     }
 
   </style>
