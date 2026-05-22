@@ -253,6 +253,36 @@
     .gb8 { background: linear-gradient(135deg,#3b1010,#5c2200); }
     .gb9 { background: linear-gradient(135deg,#4d1a00,#6b1010); }
 
+
+    /* aurora blue gradients — night → ocean → sky, subtle transition from warm darks */
+    .gbn0 { background: linear-gradient(135deg,#0e0d28,#1a1040); }
+    .gbn1 { background: linear-gradient(135deg,#0a1a3c,#0d2255); }
+    .gbn2 { background: linear-gradient(135deg,#0d2040,#0a2e5a); }
+    .gbn3 { background: linear-gradient(135deg,#082535,#0a3248); }
+    .gbn4 { background: linear-gradient(135deg,#0a2845,#0d3860); }
+    .gbn5 { background: linear-gradient(135deg,#0d1f3d,#153560); }
+    .gbn6 { background: linear-gradient(135deg,#0a2245,#0d3858); }
+    .gbn7 { background: linear-gradient(135deg,#082030,#0a2e50); }
+    .gbn8 { background: linear-gradient(135deg,#080f28,#0a1c40); }
+    .gbn9 { background: linear-gradient(135deg,#0d1535,#0a2248); }
+
+    /* blue tag/reveal/cta variants */
+    .tag-nightblue  { background: rgba(13,21,53,0.1);  color: #1e3a8a; border: 1px solid rgba(13,21,53,0.25); }
+    .tag-oceanblue  { background: rgba(10,26,60,0.1);  color: #1e40af; border: 1px solid rgba(10,26,60,0.25); }
+    .tag-skyblue    { background: rgba(13,32,64,0.1);  color: #1d4ed8; border: 1px solid rgba(13,32,64,0.25); }
+    .reveal-nightblue { background: linear-gradient(135deg,#0e0d28,#0a1640); }
+    .reveal-oceanblue { background: linear-gradient(135deg,#0a1a3c,#082535); }
+    .reveal-skyblue   { background: linear-gradient(135deg,#0a2040,#0d3060); }
+    .cta-nightblue  { background: linear-gradient(90deg,#1e3a8a,#1e40af); }
+    .cta-oceanblue  { background: linear-gradient(90deg,#0369a1,#075985); }
+    .cta-skyblue    { background: linear-gradient(90deg,#2563eb,#1d4ed8); }
+
+    /* blue symbol colors */
+    .col-night   { color: #3b5bdb; }
+    .col-ocean   { color: #0284c7; }
+    .col-sky     { color: #38bdf8; }
+    .col-aurora  { color: #818cf8; }
+
     /* ── WALL FOOTER ── */
     .wall-bottom {
       margin-top:12px;
@@ -371,7 +401,7 @@
     </p>
     <div class="hero-stats">
       <div class="h-stat">
-        <strong id="wall-count">3</strong>
+        <strong id="wall-count">6</strong>
         <span>walls live</span>
       </div>
       <div class="h-stat">
@@ -422,6 +452,98 @@
 const WALLS = [
 
   /* ── ADD NEW WALLS AT THE TOP ── */
+
+  /* ── WALL 6: Football Fever ── */
+  {
+    tag:         "Football · World Cup · 2026",
+    tagColor:    "tag-skyblue",
+    date:        "22 May 2026",
+    teaser:      "48 teams. 3 nations. 1 world holding its breath.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-skyblue",
+    ctaColor:    "cta-skyblue",
+    reveal:      "<strong>The World Cup kicks off 11 June 2026.</strong> USA, Canada and Mexico co-host for the first time. 48 teams. 104 matches. Mbappe, Yamal, Vinicius — and a planet that desperately needs something beautiful to watch.",
+    tiles: [
+      { sym:"⬡",  cat:"host",    catColor:"col-sky",    word:"USA Canada Mex",    gradient:"gbn0" },
+      { sym:"∞",  cat:"teams",   catColor:"col-aurora",  word:"48 nations",        gradient:"gbn5" },
+      { sym:"◈",  cat:"matches", catColor:"col-sky",    word:"104 games",          gradient:"gbn2" },
+      { sym:"✦",  cat:"opens",   catColor:"col-ocean",  word:"11 June 2026",       gradient:"gbn7" },
+      { sym:"△",  cat:"final",   catColor:"col-sky",    word:"19 July NJ",         gradient:"gbn3" },
+      { sym:"α",  cat:"star",    catColor:"col-aurora",  word:"Yamal, 18",         gradient:"gbn6" },
+      { sym:"Ω",  cat:"record",  catColor:"col-sky",    word:"biggest ever",       gradient:"gbn1" },
+      { sym:"⊕",  cat:"threat",  catColor:"col-ocean",  word:"Ebola shadow",       gradient:"gbn8" },
+      { sym:"π",  cat:"politics",catColor:"col-aurora",  word:"Trump vs FIFA",     gradient:"gbn4" },
+      { sym:"≋",  cat:"Iran",    catColor:"col-sky",    word:"may not play",       gradient:"gbn9" },
+      { sym:"⟡",  cat:"tickets", catColor:"col-ocean",  word:"unaffordable",       gradient:"gbn2" },
+      { sym:"∴",  cat:"Brazil",  catColor:"col-aurora",  word:"Ancelotti leads",  gradient:"gbn5" },
+      { sym:"λ",  cat:"England", catColor:"col-sky",    word:"squad confirmed",    gradient:"gbn0" },
+      { sym:"Δ",  cat:"Germany", catColor:"col-ocean",  word:"Neuer returns",      gradient:"gbn7" },
+      { sym:"◉",  cat:"world",   catColor:"col-aurora",  word:"needs this now",   gradient:"gbn3" },
+      { sym:"⟰",  cat:"kick off",catColor:"col-sky",    word:"20 days away",      gradient:"gbn6" },
+    ]
+  },
+
+  /* ── WALL 5: Africa Right Now ── */
+  {
+    tag:         "Africa · Crisis · 2026",
+    tagColor:    "tag-oceanblue",
+    date:        "21 May 2026",
+    teaser:      "A continent moves. The world barely notices.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-oceanblue",
+    ctaColor:    "cta-oceanblue",
+    reveal:      "<strong>Africa is not one story — it is fifty.</strong> Ebola in Congo and Uganda. Fuel riots in Kenya. Sudan still burning. Malawi's most expensive fuel on earth. Niger silencing the press. The continent is moving fast. The headlines are not keeping up.",
+    tiles: [
+      { sym:"◈",  cat:"health",  catColor:"col-ocean",  word:"Ebola returns",      gradient:"gbn1" },
+      { sym:"⊘",  cat:"Congo",   catColor:"col-sky",    word:"528 cases",          gradient:"gbn4" },
+      { sym:"△",  cat:"Kenya",   catColor:"col-aurora", word:"fuel riots",         gradient:"gbn8" },
+      { sym:"≋",  cat:"Sudan",   catColor:"col-ocean",  word:"war continues",      gradient:"gbn2" },
+      { sym:"∅",  cat:"Malawi",  catColor:"col-sky",    word:"$3.83 per litre",    gradient:"gbn6" },
+      { sym:"⟁",  cat:"Niger",   catColor:"col-aurora", word:"press banned",       gradient:"gbn0" },
+      { sym:"⌇",  cat:"IS",      catColor:"col-ocean",  word:"86% global share",   gradient:"gbn9" },
+      { sym:"∞",  cat:"Sahel",   catColor:"col-sky",    word:"spreading fast",     gradient:"gbn3" },
+      { sym:"Σ",  cat:"Somalia", catColor:"col-aurora", word:"election chaos",     gradient:"gbn7" },
+      { sym:"⊞",  cat:"Nigeria", catColor:"col-ocean",  word:"airstrikes probed",  gradient:"gbn5" },
+      { sym:"✦",  cat:"food",    catColor:"col-sky",    word:"2027 shortage?",     gradient:"gbn1" },
+      { sym:"γ",  cat:"S.Africa",catColor:"col-aurora", word:"inflation spikes",   gradient:"gbn4" },
+      { sym:"Δ",  cat:"justice", catColor:"col-ocean",  word:"Lumumba case ends",  gradient:"gbn8" },
+      { sym:"⌬",  cat:"UN",      catColor:"col-sky",    word:"Nairobi expands",    gradient:"gbn2" },
+      { sym:"λ",  cat:"data",    catColor:"col-aurora", word:"Cape Town fights",   gradient:"gbn6" },
+      { sym:"◉",  cat:"world",   catColor:"col-ocean",  word:"are you watching?",  gradient:"gbn0" },
+    ]
+  },
+
+  /* ── WALL 4: Global Gas Policy ── */
+  {
+    tag:         "Energy · Gas · 2026",
+    tagColor:    "tag-nightblue",
+    date:        "20 May 2026",
+    teaser:      "Something is running out. And it isn't time.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-nightblue",
+    ctaColor:    "cta-nightblue",
+    reveal:      "<strong>20% of global LNG supply vanished in weeks.</strong> The Strait of Hormuz closed. Qatar declared force majeure. Europe is entering summer with its lowest gas reserves since 2018. The IEA calls it the greatest energy security threat in history.",
+    tiles: [
+      { sym:"∼",  cat:"gas",     catColor:"col-night",  word:"20% LNG gone",       gradient:"gbn8" },
+      { sym:"⊘",  cat:"strait",  catColor:"col-ocean",  word:"Hormuz closed",      gradient:"gbn0" },
+      { sym:"◈",  cat:"Qatar",   catColor:"col-aurora", word:"force majeure",       gradient:"gbn5" },
+      { sym:"△",  cat:"price",   catColor:"col-night",  word:"highest since 23",   gradient:"gbn2" },
+      { sym:"∞",  cat:"supply",  catColor:"col-ocean",  word:"120bcm lost",        gradient:"gbn7" },
+      { sym:"⌇",  cat:"Europe",  catColor:"col-aurora", word:"lowest reserves",    gradient:"gbn3" },
+      { sym:"Σ",  cat:"IEA",     catColor:"col-night",  word:"worst ever crisis",  gradient:"gbn9" },
+      { sym:"⬡",  cat:"Qatar",   catColor:"col-ocean",  word:"17% capacity hit",   gradient:"gbn1" },
+      { sym:"⟡",  cat:"Asia",    catColor:"col-aurora", word:"competing for LNG",  gradient:"gbn6" },
+      { sym:"λ",  cat:"policy",  catColor:"col-night",  word:"coal switching back", gradient:"gbn4" },
+      { sym:"Ω",  cat:"delay",   catColor:"col-ocean",  word:"2 year setback",     gradient:"gbn8" },
+      { sym:"π",  cat:"Iran",    catColor:"col-aurora", word:"war caused this",    gradient:"gbn2" },
+      { sym:"⊞",  cat:"stocks",  catColor:"col-night",  word:"IEA releases oil",   gradient:"gbn5" },
+      { sym:"∴",  cat:"2030",    catColor:"col-ocean",  word:"tight until then",   gradient:"gbn0" },
+      { sym:"✦",  cat:"you",     catColor:"col-aurora", word:"heating bills?",     gradient:"gbn7" },
+      { sym:"◉",  cat:"ask",     catColor:"col-night",  word:"who profits?",       gradient:"gbn3" },
+    ]
+  },
+
+
 
   /* ── WALL 3: India Heatwave ── */
   {
