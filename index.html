@@ -697,11 +697,17 @@ WALLS.forEach((wall, wi) => {
         </div>
       </div>`;
     wrap.addEventListener('click', () => {
-      if (wrap.classList.contains('flipped')) return;
-      wrap.classList.add('flipped');
-      flipped++;
-      counter.textContent = flipped;
-      if (flipped === total) reveal.style.display = 'block';
+      if (wrap.classList.contains('flipped')) {
+        wrap.classList.remove('flipped');
+        flipped--;
+        counter.textContent = flipped;
+        reveal.style.display = 'none';
+      } else {
+        wrap.classList.add('flipped');
+        flipped++;
+        counter.textContent = flipped;
+        if (flipped === total) reveal.style.display = 'block';
+      }
     });
     grid.appendChild(wrap);
   });
