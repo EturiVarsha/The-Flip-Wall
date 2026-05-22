@@ -248,13 +248,13 @@
 
     /* ── WALL GLASS CARD ── */
     .wall {
-      background: rgba(253,245,232,0.42);
+      background: rgba(253,245,232,0.82);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.7);
       border-radius: 20px;
       padding: 2rem;
-      box-shadow: 0 8px 40px rgba(127,29,29,0.07), inset 0 1px 0 rgba(255,255,255,0.65);
+      box-shadow: 0 8px 40px rgba(127,29,29,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
     }
 
     /* ── WALL META ── */
@@ -267,14 +267,15 @@
       font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
       padding: 4px 12px; border-radius: 3px; font-weight: 700;
     }
-    .tag-maroon { background: rgba(127,29,29,0.1);  color: #7f1d1d; border: 1px solid rgba(127,29,29,0.25); }
-    .tag-orange { background: rgba(194,68,10,0.1);  color: #9a3307; border: 1px solid rgba(194,68,10,0.25); }
-    .tag-yellow { background: rgba(180,83,9,0.1);   color: #92400e; border: 1px solid rgba(180,83,9,0.25); }
+    .tag-maroon { background: rgba(127,29,29,0.15);  color: #6b0f0f; border: 1px solid rgba(127,29,29,0.4); font-weight: 700; }
+    .tag-orange { background: rgba(194,68,10,0.15);  color: #7c2705; border: 1px solid rgba(194,68,10,0.4); font-weight: 700; }
+    .tag-yellow { background: rgba(180,83,9,0.15);   color: #78330a; border: 1px solid rgba(180,83,9,0.4); font-weight: 700; }
     .tag-ink    { background: rgba(28,10,4,0.07);   color: #3d1a0a; border: 1px solid rgba(28,10,4,0.15); }
 
     .wall-date {
-      font-size: 0.58rem; color: var(--hint);
+      font-size: 0.58rem; color: #6b3010;
       letter-spacing: 0.1em; text-transform: uppercase; padding-top: 5px;
+      font-weight: 600;
     }
 
     .wall-teaser {
@@ -285,8 +286,9 @@
     }
 
     .wall-hint {
-      font-size: 0.62rem; color: var(--hint);
+      font-size: 0.62rem; color: #7a3a18;
       letter-spacing: 0.08em; margin-bottom: 1.25rem;
+      font-weight: 500;
     }
 
     /* ── TILE GRID ── */
@@ -382,9 +384,9 @@
     .gbn9 { background: linear-gradient(135deg,#0d1535,#0a2248); }
 
     /* blue tag/reveal/cta variants */
-    .tag-nightblue  { background: rgba(13,21,53,0.1);  color: #1e3a8a; border: 1px solid rgba(13,21,53,0.25); }
-    .tag-oceanblue  { background: rgba(10,26,60,0.1);  color: #1e40af; border: 1px solid rgba(10,26,60,0.25); }
-    .tag-skyblue    { background: rgba(13,32,64,0.1);  color: #1d4ed8; border: 1px solid rgba(13,32,64,0.25); }
+    .tag-nightblue  { background: rgba(13,21,53,0.15);  color: #1e3a8a; border: 1px solid rgba(13,21,53,0.4); font-weight: 700; }
+    .tag-oceanblue  { background: rgba(10,26,60,0.15);  color: #1e40af; border: 1px solid rgba(10,26,60,0.4); font-weight: 700; }
+    .tag-skyblue    { background: rgba(13,32,64,0.15);  color: #1d4ed8; border: 1px solid rgba(13,32,64,0.4); font-weight: 700; }
     .reveal-nightblue { background: linear-gradient(135deg,#0e0d28,#0a1640); }
     .reveal-oceanblue { background: linear-gradient(135deg,#0a1a3c,#082535); }
     .reveal-skyblue   { background: linear-gradient(135deg,#0a2040,#0d3060); }
@@ -424,9 +426,9 @@
     .gblg4 { background: linear-gradient(135deg,#0a2a0a,#154520); }
 
     /* green/yellow tag, reveal, cta variants */
-    .tag-deepgreen  { background: rgba(10,46,10,0.1);  color: #14532d; border: 1px solid rgba(10,46,10,0.25); }
-    .tag-gold       { background: rgba(46,37,0,0.1);   color: #78350f; border: 1px solid rgba(46,37,0,0.25); }
-    .tag-sage       { background: rgba(15,40,15,0.1);  color: #166534; border: 1px solid rgba(15,40,15,0.25); }
+    .tag-deepgreen  { background: rgba(10,46,10,0.15);  color: #14532d; border: 1px solid rgba(10,46,10,0.4); font-weight: 700; }
+    .tag-gold       { background: rgba(46,37,0,0.15);   color: #78350f; border: 1px solid rgba(46,37,0,0.4); font-weight: 700; }
+    .tag-sage       { background: rgba(15,40,15,0.15);  color: #166534; border: 1px solid rgba(15,40,15,0.4); font-weight: 700; }
     .reveal-deepgreen { background: linear-gradient(135deg,#0a1e0a,#0d3015); }
     .reveal-gold      { background: linear-gradient(135deg,#1e1800,#2e2500); }
     .reveal-sage      { background: linear-gradient(135deg,#0a280a,#153515); }
@@ -461,9 +463,9 @@
     .gbp4 { background: linear-gradient(135deg,#280818,#3d1025); }
 
     /* orange/yellow/pink tag, reveal, cta */
-    .tag-saffron  { background: rgba(234,88,12,0.1);  color: #9a3e00; border: 1px solid rgba(234,88,12,0.25); }
-    .tag-marigold { background: rgba(202,138,4,0.1);  color: #854d0e; border: 1px solid rgba(202,138,4,0.25); }
-    .tag-rose     { background: rgba(219,39,119,0.1); color: #9d174d; border: 1px solid rgba(219,39,119,0.25); }
+    .tag-saffron  { background: rgba(234,88,12,0.15);  color: #7c3200; border: 1px solid rgba(234,88,12,0.4); font-weight: 700; }
+    .tag-marigold { background: rgba(202,138,4,0.15);  color: #6b3e0a; border: 1px solid rgba(202,138,4,0.4); font-weight: 700; }
+    .tag-rose     { background: rgba(219,39,119,0.15); color: #831040; border: 1px solid rgba(219,39,119,0.4); font-weight: 700; }
     .reveal-saffron  { background: linear-gradient(135deg,#3d1200,#501800); }
     .reveal-marigold { background: linear-gradient(135deg,#2a2200,#3a2e00); }
     .reveal-rose     { background: linear-gradient(135deg,#3d0a28,#4a0d30); }
@@ -484,17 +486,20 @@
       flex-wrap:wrap; gap:8px;
     }
     .w-progress {
-      font-size:0.6rem; color:var(--hint); letter-spacing:0.1em;
+      font-size:0.6rem; color: #6b3010; letter-spacing:0.1em;
+      font-weight: 600;
     }
     .w-progress b { color: var(--maroon); }
 
     .w-reset {
-      font-family:var(--font-m); font-size:0.58rem; color:var(--hint);
-      background:transparent; border:1px solid var(--border);
+      font-family:var(--font-m); font-size:0.58rem; color: #7a3a18;
+      background: rgba(253,245,232,0.6);
+      border:1px solid rgba(127,29,29,0.25);
       border-radius:4px; padding:5px 12px; cursor:pointer;
       letter-spacing:0.1em; text-transform:uppercase; transition:all 0.2s;
+      font-weight: 600;
     }
-    .w-reset:hover { color:var(--maroon); border-color:rgba(127,29,29,0.35); }
+    .w-reset:hover { color:var(--maroon); border-color:rgba(127,29,29,0.5); background: rgba(253,245,232,0.9); }
 
     /* ── REVEAL ── */
     .w-reveal {
@@ -508,7 +513,7 @@
     .reveal-yellow { background: linear-gradient(135deg,#3a1800,#5c2800); }
 
     .w-reveal p {
-      font-size:0.7rem; color:rgba(255,240,220,0.7);
+      font-size:0.7rem; color:rgba(255,240,220,0.92);
       line-height:1.85; letter-spacing:0.04em; margin-bottom:14px;
     }
     .w-reveal strong { color:#fff; font-weight:700; }
