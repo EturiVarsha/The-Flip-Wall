@@ -570,10 +570,36 @@
       .h-stat strong { font-size: 1.2rem; }
       nav { padding: 0 4%; }
       .nav-right .hide-mob { display: none; }
-      .tile-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-      .t-back .t-word { font-size: clamp(9px, 2.8vw, 13px); }
-      .t-front .t-sym { font-size: clamp(18px, 5.5vw, 26px); }
-      .t-front .t-cat { font-size: clamp(6px, 1.6vw, 8px); }
+
+      /* 2 columns — big premium tiles */
+      .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .t-wrap { min-height: 120px; }
+
+      /* Elevated glass tile styling */
+      .t-front {
+        background: rgba(255,248,235,0.72);
+        border: 1.5px solid rgba(255,255,255,0.85);
+        box-shadow:
+          0 8px 24px rgba(127,29,29,0.12),
+          0 2px 8px rgba(127,29,29,0.08),
+          inset 0 1.5px 0 rgba(255,255,255,0.95);
+        border-radius: 14px;
+      }
+      .t-back { border-radius: 14px; }
+      .t-inner { border-radius: 14px; }
+      .t-wrap { border-radius: 14px; }
+
+      /* Big readable text on mobile */
+      .t-front .t-sym { font-size: clamp(32px, 9vw, 48px); margin-bottom: 8px; }
+      .t-front .t-cat {
+        font-size: clamp(10px, 2.8vw, 13px);
+        font-weight: 700; letter-spacing: 0.08em;
+      }
+      .t-back .t-word { font-size: clamp(11px, 3.2vw, 15px); letter-spacing: 0.06em; }
+
+      /* Tap feedback */
+      .t-wrap:active .t-front { transform: scale(0.97); }
+
       .wall-teaser { font-size: clamp(1rem, 4vw, 1.3rem); }
       .wall-hint { font-size: 0.58rem; }
       .w-progress { font-size: 0.58rem; }
@@ -594,16 +620,17 @@
       .blob-3 { width: 300px; height: 300px; filter: blur(60px); }
       .blob-4 { width: 200px; height: 200px; filter: blur(50px); }
       .blob-5 { width: 240px; height: 240px; filter: blur(50px); }
-      .t-wrap { min-height: 70px; }
     }
 
     @media (max-width: 380px) {
-      .tile-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+      .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .t-wrap { min-height: 100px; }
       .wall { padding: 1rem 0.85rem; }
       .feed { padding: 1.5rem 3%; gap: 1.5rem; }
       .hero-h1 { font-size: 2.2rem; }
-      .t-back .t-word { font-size: 9px; }
-      .t-front .t-sym { font-size: 18px; }
+      .t-front .t-sym { font-size: 28px; }
+      .t-front .t-cat { font-size: 10px; }
+      .t-back .t-word { font-size: 11px; }
     }
 
   </style>
