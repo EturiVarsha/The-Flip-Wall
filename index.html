@@ -10,7 +10,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,13 +25,13 @@
       --muted:   #7a3a1a;
       --hint:    #a05a30;
       --border:  rgba(127,29,29,0.14);
-      --font-d:  'Syne', sans-serif;
-      --font-m:  'Space Mono', monospace;
+      --font-d:  'Playfair Display', Georgia, serif;
+      --font-m:  'Libre Franklin', Arial, sans-serif;
       --nav-h:   64px;
     }
 
     body {
-      font-family: var(--font-m);
+      font-family: 'Libre Franklin', sans-serif;
       min-height: 100vh;
       color: var(--ink);
       overflow-x: hidden;
@@ -217,7 +217,7 @@
       line-height:1; user-select:none; margin-bottom:5px;
     }
     .t-front .t-cat {
-      font-family: var(--font-m);
+      font-family: 'Libre Franklin', sans-serif;
       font-size: clamp(6px,1.1vw,7.5px);
       letter-spacing:0.07em; text-transform:uppercase; line-height:1.3;
     }
@@ -229,7 +229,7 @@
     }
     .t-back .t-dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3); }
     .t-back .t-word {
-      font-family: var(--font-d); font-weight:800;
+      font-family: 'Playfair Display', serif; font-weight:900;
       font-size: clamp(8px,1.8vw,11px);
       color:#fff; text-transform:uppercase;
       letter-spacing:0.03em; line-height:1.25;
