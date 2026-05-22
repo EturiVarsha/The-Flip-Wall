@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Flip Wall · by MPL</title>
+  <meta name="description" content="Current affairs, one flip at a time. An interactive news wall by Million Phrases Labs.">
+  <meta property="og:title" content="The Flip Wall · by MPL">
+  <meta property="og:description" content="Flip the tiles. Find the story.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:   #fdf5e8;
+      --maroon:  #7f1d1d;
+      --orange:  #c2440a;
+      --yellow:  #b45309;
+      --ink:     #1c0a04;
+      --muted:   #7a3a1a;
+      --hint:    #a05a30;
+      --border:  rgba(127,29,29,0.14);
+      --font-d:  'Syne', sans-serif;
+      --font-m:  'Space Mono', monospace;
+      --nav-h:   64px;
+    }
+
+    body {
+      font-family: var(--font-m);
+      min-height: 100vh;
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+      background:
+        radial-gradient(ellipse 80% 60% at 0%   0%,   rgba(194,68,10,0.22)  0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 100% 0%,   rgba(127,29,29,0.20)  0%, transparent 60%),
+        radial-gradient(ellipse 90% 60% at 100% 100%,  rgba(217,119,6,0.22)  0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 0%   100%,  rgba(194,68,10,0.15)  0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50%  50%,   rgba(255,237,200,0.7) 0%, transparent 70%),
+        #fdf5e8;
+      background-attachment: fixed;
+    }
+
+    a { text-decoration: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #fdf0d8; }
+    ::-webkit-scrollbar-thumb { background: var(--maroon); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(253,245,232,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-d);
+      font-size: 1rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--ink);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-logo .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.5; transform:scale(0.75); }
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-right a {
+      font-size: 0.68rem; color: var(--hint);
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--maroon); }
+
+    .nav-mpl {
+      color: var(--maroon) !important;
+      border: 1px solid rgba(127,29,29,0.35) !important;
+      padding: 0.35rem 0.9rem; border-radius: 4px;
+      transition: background 0.2s !important; font-weight: 700 !important;
+    }
+    .nav-mpl:hover { background: rgba(127,29,29,0.08) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 54vh;
+      display: flex; align-items: flex-end;
+      padding: calc(var(--nav-h) + 3.5rem) 5% 3.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+
+    .hero-label {
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .hero-label::before { content:''; width:24px; height:1px; background:currentColor; }
+
+    .hero-h1 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800; line-height: 0.92;
+      letter-spacing: -0.04em; margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+    .hero-h1 .c-maroon { color: var(--maroon); }
+    .hero-h1 .c-orange { color: var(--orange); }
+    .hero-h1 .c-yellow { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 0.78rem; color: var(--hint);
+      letter-spacing: 0.05em; line-height: 1.8; max-width: 460px;
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+    }
+    .h-stat strong {
+      display: block; font-family: var(--font-d);
+      font-size: 1.6rem; font-weight: 800; color: var(--maroon); line-height: 1;
+    }
+    .h-stat span {
+      font-size: 0.6rem; color: var(--hint);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    /* ── FEED ── */
+    .feed {
+      max-width: 900px; margin: 0 auto;
+      padding: 4rem 5%;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+
+    /* ── WALL META ── */
+    .wall-meta {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;
+    }
+
+    .wall-tag {
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 3px; font-weight: 700;
+    }
+    .tag-maroon { background: rgba(127,29,29,0.1);  color: #7f1d1d; border: 1px solid rgba(127,29,29,0.25); }
+    .tag-orange { background: rgba(194,68,10,0.1);  color: #9a3307; border: 1px solid rgba(194,68,10,0.25); }
+    .tag-yellow { background: rgba(180,83,9,0.1);   color: #92400e; border: 1px solid rgba(180,83,9,0.25); }
+    .tag-ink    { background: rgba(28,10,4,0.07);   color: #3d1a0a; border: 1px solid rgba(28,10,4,0.15); }
+
+    .wall-date {
+      font-size: 0.58rem; color: var(--hint);
+      letter-spacing: 0.1em; text-transform: uppercase; padding-top: 5px;
+    }
+
+    .wall-teaser {
+      font-family: var(--font-d);
+      font-size: clamp(1.1rem, 3vw, 1.65rem);
+      font-weight: 700; color: var(--ink);
+      line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.02em;
+    }
+
+    .wall-hint {
+      font-size: 0.62rem; color: var(--hint);
+      letter-spacing: 0.08em; margin-bottom: 1.25rem;
+    }
+
+    /* ── TILE GRID ── */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 560px) {
+      .tile-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    .t-wrap { perspective: 900px; aspect-ratio: 1/1; cursor: pointer; }
+
+    .t-inner {
+      width:100%; height:100%; position:relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+      border-radius: 10px;
+    }
+    .t-wrap.flipped .t-inner { transform: rotateY(180deg); }
+
+    .t-front, .t-back {
+      position:absolute; inset:0; border-radius:10px;
+      backface-visibility: hidden;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:8px; box-sizing:border-box; text-align:center;
+    }
+
+    /* front: warm cream with maroon/orange tint */
+    .t-front {
+      background: rgba(255,248,235,0.92);
+      border: 1px solid rgba(180,83,9,0.2);
+    }
+    .t-front .t-sym {
+      font-size: clamp(20px,4vw,30px);
+      line-height:1; user-select:none; margin-bottom:5px;
+    }
+    .t-front .t-cat {
+      font-family: var(--font-m);
+      font-size: clamp(6px,1.1vw,7.5px);
+      letter-spacing:0.07em; text-transform:uppercase; line-height:1.3;
+    }
+
+    /* back: rich dark gradients — tile backs stay dark for contrast */
+    .t-back {
+      transform: rotateY(180deg);
+      border:none; gap:5px;
+    }
+    .t-back .t-dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3); }
+    .t-back .t-word {
+      font-family: var(--font-d); font-weight:800;
+      font-size: clamp(8px,1.8vw,11px);
+      color:#fff; text-transform:uppercase;
+      letter-spacing:0.03em; line-height:1.25;
+    }
+
+    /* symbol colors — warm palette on cream */
+    .col-maroon { color: #9b1c1c; }
+    .col-orange { color: #c2440a; }
+    .col-yellow { color: #b45309; }
+    .col-brown  { color: #92400e; }
+
+    /* back tile gradients — dark rich tones */
+    .gb0 { background: linear-gradient(135deg,#3b0d0d,#5a1a0a); }
+    .gb1 { background: linear-gradient(135deg,#5a1a0a,#2e1500); }
+    .gb2 { background: linear-gradient(135deg,#2e1500,#3b0d0d); }
+    .gb3 { background: linear-gradient(135deg,#4a0d0d,#6b2200); }
+    .gb4 { background: linear-gradient(135deg,#6b2200,#3a1a00); }
+    .gb5 { background: linear-gradient(135deg,#3a1a00,#4a0d0d); }
+    .gb6 { background: linear-gradient(135deg,#5c1515,#7a2800); }
+    .gb7 { background: linear-gradient(135deg,#7a2800,#4a1a00); }
+    .gb8 { background: linear-gradient(135deg,#3b1010,#5c2200); }
+    .gb9 { background: linear-gradient(135deg,#4d1a00,#6b1010); }
+
+    /* ── WALL FOOTER ── */
+    .wall-bottom {
+      margin-top:12px;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:8px;
+    }
+    .w-progress {
+      font-size:0.6rem; color:var(--hint); letter-spacing:0.1em;
+    }
+    .w-progress b { color: var(--maroon); }
+
+    .w-reset {
+      font-family:var(--font-m); font-size:0.58rem; color:var(--hint);
+      background:transparent; border:1px solid var(--border);
+      border-radius:4px; padding:5px 12px; cursor:pointer;
+      letter-spacing:0.1em; text-transform:uppercase; transition:all 0.2s;
+    }
+    .w-reset:hover { color:var(--maroon); border-color:rgba(127,29,29,0.35); }
+
+    /* ── REVEAL ── */
+    .w-reveal {
+      margin-top:14px; border-radius:10px; padding:18px 20px;
+      display:none; border:1px solid rgba(127,29,29,0.2);
+    }
+    .reveal-maroon { background: linear-gradient(135deg,#4a0d0d,#3b0a08); }
+    .reveal-orange { background: linear-gradient(135deg,#6b2200,#4a1200); }
+    .reveal-yellow { background: linear-gradient(135deg,#3a1800,#5c2800); }
+
+    .w-reveal p {
+      font-size:0.7rem; color:rgba(255,240,220,0.7);
+      line-height:1.85; letter-spacing:0.04em; margin-bottom:14px;
+    }
+    .w-reveal strong { color:#fff; font-weight:700; }
+
+    .w-reveal a {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-family:var(--font-d); font-weight:800; font-size:0.78rem;
+      color:#fff; padding:10px 20px; border-radius:6px;
+      letter-spacing:0.04em; transition:opacity 0.2s;
+    }
+    .w-reveal a:hover { opacity:0.85; }
+    .cta-maroon { background: linear-gradient(90deg,#9b1c1c,#7f1d1d); }
+    .cta-orange { background: linear-gradient(90deg,#c2440a,#9a3307); }
+    .cta-yellow { background: linear-gradient(90deg,#b45309,#92400e); }
+
+    /* ── DIVIDER ── */
+    .wall-divider {
+      height:1px; margin-top:5rem;
+      background:linear-gradient(90deg,transparent,rgba(127,29,29,0.2),transparent);
+    }
+
+    /* ── ABOUT ── */
+    .about-strip {
+      border-top:1px solid var(--border);
+      padding:3rem 5%; max-width:900px; margin:0 auto;
+    }
+    .about-strip .eyebrow {
+      font-size:0.6rem; color:var(--orange); letter-spacing:0.18em;
+      text-transform:uppercase; margin-bottom:0.75rem;
+    }
+    .about-strip p {
+      font-family:var(--font-d); font-weight:700;
+      font-size:clamp(1rem,2.5vw,1.3rem); color:var(--ink);
+      line-height:1.45; max-width:600px;
+    }
+    .about-strip a { color:var(--maroon); border-bottom:1px solid rgba(127,29,29,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top:1px solid var(--border);
+      padding:2.5rem 5%; text-align:center;
+      background:rgba(127,29,29,0.04);
+    }
+    footer p {
+      font-size:0.62rem; color:var(--hint);
+      letter-spacing:0.1em; line-height:2.2;
+    }
+    footer a { color:var(--maroon); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:480px) {
+      .nav-right .hide-mob { display:none; }
+      .feed { padding:2.5rem 4%; gap:3.5rem; }
+      .hero-h1 { letter-spacing:-0.03em; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="dot"></span>
+    The Flip Wall
+  </div>
+  <div class="nav-right">
+    <a href="#feed" class="hide-mob">walls</a>
+    <a href="#about" class="hide-mob">about</a>
+    <a href="https://eturivarsha.github.io/MPL/" target="_blank" class="nav-mpl">by MPL →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">A new kind of news</p>
+    <h1 class="hero-h1">
+      Flip<span class="c-orange">.</span><br>
+      <span class="c-maroon">Find</span><span class="c-orange">.</span><br>
+      <span class="c-yellow">Know</span><span class="c-orange">.</span>
+    </h1>
+    <p class="hero-sub">
+      No headlines. No scroll bait. Just tiles — and what's hiding behind them.
+      Current affairs, one flip at a time.
+    </p>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <strong id="wall-count">3</strong>
+        <span>walls live</span>
+      </div>
+      <div class="h-stat">
+        <strong>Daily</strong>
+        <span>new walls</span>
+      </div>
+      <div class="h-stat">
+        <strong>0 ads</strong>
+        <span>ever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALLS FEED -->
+<main class="feed" id="feed"></main>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <p class="eyebrow">About this wall</p>
+  <p>
+    The Flip Wall is a current affairs experiment by
+    <a href="https://eturivarsha.github.io/MPL/" target="_blank">Million Phrases Labs</a>.
+    Every wall is a story. Every tile is a fact.
+    No algorithms, no paywalls, no noise.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    The Flip Wall · by <a href="https://eturivarsha.github.io/MPL/" target="_blank">Million Phrases Labs</a><br>
+    Words. Websites. Visuals.<br>
+    Updated daily · Varsha Eturi
+  </p>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   WALLS — add new walls at the TOP of this array.
+   tagColor: tag-maroon / tag-orange / tag-yellow / tag-ink
+   revealColor: reveal-maroon / reveal-orange / reveal-yellow
+   ctaColor: cta-maroon / cta-orange / cta-yellow
+   catColor: col-maroon / col-orange / col-yellow / col-brown
+   gradient: gb0 through gb9
+═══════════════════════════════════════════════════════════ */
+const WALLS = [
+
+  /* ── ADD NEW WALLS AT THE TOP ── */
+
+  /* ── WALL 3: India Heatwave ── */
+  {
+    tag:         "Heat · India · 2026",
+    tagColor:    "tag-orange",
+    date:        "22 May 2026",
+    teaser:      "Something is burning. And it isn't the news cycle.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-orange",
+    ctaColor:    "cta-orange",
+    reveal:      "<strong>India is cooking.</strong> Pre-monsoon temperatures crossed 48°C in parts of Rajasthan and UP. Heat waves now arrive earlier, stay longer, and kill more quietly than ever. The poor bear the most. The powerful barely notice.",
+    tiles: [
+      { sym:"☀",  cat:"temp",    catColor:"col-orange", word:"48°C recorded",     gradient:"gb5" },
+      { sym:"∅",  cat:"water",   catColor:"col-yellow", word:"reservoirs low",    gradient:"gb6" },
+      { sym:"⊘",  cat:"workers", catColor:"col-orange", word:"outdoor bans",      gradient:"gb1" },
+      { sym:"≋",  cat:"health",  catColor:"col-maroon", word:"heatstroke surge",  gradient:"gb4" },
+      { sym:"△",  cat:"power",   catColor:"col-orange", word:"grid overloaded",   gradient:"gb2" },
+      { sym:"◌",  cat:"cities",  catColor:"col-yellow", word:"Delhi, UP, Raj",    gradient:"gb8" },
+      { sym:"⌇",  cat:"timing",  catColor:"col-maroon", word:"2 weeks early",     gradient:"gb3" },
+      { sym:"Δ",  cat:"future",  catColor:"col-orange", word:"worse each year",   gradient:"gb9" },
+      { sym:"⟁",  cat:"poor",    catColor:"col-brown",  word:"most affected",     gradient:"gb0" },
+      { sym:"⊞",  cat:"policy",  catColor:"col-yellow", word:"action plans?",     gradient:"gb7" },
+      { sym:"◉",  cat:"sleep",   catColor:"col-orange", word:"nights not cool",   gradient:"gb5" },
+      { sym:"α",  cat:"science", catColor:"col-maroon", word:"climate link: yes", gradient:"gb1" },
+      { sym:"λ",  cat:"monsoon", catColor:"col-yellow", word:"still weeks away",  gradient:"gb3" },
+      { sym:"Σ",  cat:"deaths",  catColor:"col-brown",  word:"undercounted",      gradient:"gb2" },
+      { sym:"∞",  cat:"cycle",   catColor:"col-orange", word:"no end in sight",   gradient:"gb6" },
+      { sym:"✦",  cat:"ask",     catColor:"col-maroon", word:"who's responsible", gradient:"gb4" },
+    ]
+  },
+
+  /* ── WALL 2: AI Layoffs ── */
+  {
+    tag:         "Tech · AI · Layoffs",
+    tagColor:    "tag-maroon",
+    date:        "20 May 2026",
+    teaser:      "The robots are here. So are the pink slips.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-maroon",
+    ctaColor:    "cta-maroon",
+    reveal:      "<strong>AI didn't just take jobs. It took certainty.</strong> In 2025–26, over 200,000 tech workers were laid off globally — many replaced quietly by automation. Nobody called it a crisis. Everyone felt it.",
+    tiles: [
+      { sym:"◈",  cat:"who",     catColor:"col-maroon", word:"200k jobs gone",    gradient:"gb0" },
+      { sym:"⌘",  cat:"why",     catColor:"col-brown",  word:"AI, not market",    gradient:"gb8" },
+      { sym:"∞",  cat:"trend",   catColor:"col-maroon", word:"still ongoing",     gradient:"gb3" },
+      { sym:"⊕",  cat:"sector",  catColor:"col-orange", word:"media hit hard",    gradient:"gb1" },
+      { sym:"⬡",  cat:"tech",    catColor:"col-maroon", word:"Google, Meta, MS",  gradient:"gb6" },
+      { sym:"⟡",  cat:"models",  catColor:"col-yellow", word:"Claude, GPT, Gem",  gradient:"gb2" },
+      { sym:"≋",  cat:"roles",   catColor:"col-brown",  word:"writers, QA, ops",  gradient:"gb9" },
+      { sym:"π",  cat:"truth",   catColor:"col-orange", word:"not a blip",        gradient:"gb4" },
+      { sym:"γ",  cat:"India",   catColor:"col-yellow", word:"BPOs at risk",      gradient:"gb7" },
+      { sym:"Ω",  cat:"hype",    catColor:"col-maroon", word:"AGI sold it",       gradient:"gb0" },
+      { sym:"✶",  cat:"irony",   catColor:"col-brown",  word:"AI wrote the memo", gradient:"gb5" },
+      { sym:"⊻",  cat:"future",  catColor:"col-orange", word:"new jobs? maybe",   gradient:"gb3" },
+      { sym:"∴",  cat:"humans",  catColor:"col-yellow", word:"still needed",      gradient:"gb1" },
+      { sym:"⟰",  cat:"signal",  catColor:"col-maroon", word:"reskill or wait",   gradient:"gb8" },
+      { sym:"⊞",  cat:"brands",  catColor:"col-brown",  word:"pivoting fast",     gradient:"gb2" },
+      { sym:"◉",  cat:"you",     catColor:"col-orange", word:"what's your plan?", gradient:"gb6" },
+    ]
+  },
+
+  /* ── WALL 1: Nepal Climate ── */
+  {
+    tag:         "Climate · Nepal · 2026",
+    tagColor:    "tag-yellow",
+    date:        "18 May 2026",
+    teaser:      "Something is melting. Flip to find out what.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-yellow",
+    ctaColor:    "cta-yellow",
+    reveal:      "<strong>Nepal emits 0.08% of global carbon. It bears 100% of the consequence.</strong> The glaciers are melting faster than the world is listening. 30% of Himalayan snow is already gone.",
+    tiles: [
+      { sym:"△",  cat:"climate",  catColor:"col-yellow", word:"glaciers melting",  gradient:"gb0" },
+      { sym:"∼",  cat:"water",    catColor:"col-maroon", word:"floods rising",     gradient:"gb3" },
+      { sym:"◌",  cat:"land",     catColor:"col-orange", word:"springs drying",    gradient:"gb1" },
+      { sym:"⌇",  cat:"rain",     catColor:"col-yellow", word:"monsoon broken",    gradient:"gb6" },
+      { sym:"⊘",  cat:"food",     catColor:"col-brown",  word:"crops failing",     gradient:"gb4" },
+      { sym:"↑",  cat:"temp",     catColor:"col-orange", word:"+0.7°c faster",     gradient:"gb2" },
+      { sym:"≋",  cat:"snow",     catColor:"col-maroon", word:"30% snow lost",     gradient:"gb8" },
+      { sym:"◈",  cat:"lakes",    catColor:"col-yellow", word:"glacial floods",    gradient:"gb5" },
+      { sym:"⟁",  cat:"people",   catColor:"col-orange", word:"forced to move",    gradient:"gb9" },
+      { sym:"∅",  cat:"justice",  catColor:"col-brown",  word:"0.08% emissions",   gradient:"gb0" },
+      { sym:"⌬",  cat:"damage",   catColor:"col-maroon", word:"$63m destroyed",    gradient:"gb7" },
+      { sym:"⟡",  cat:"record",   catColor:"col-yellow", word:"624mm in a day",    gradient:"gb3" },
+      { sym:"∞",  cat:"crisis",   catColor:"col-brown",  word:"no end in sight",   gradient:"gb1" },
+      { sym:"α",  cat:"policy",   catColor:"col-orange", word:"summits, no fix",   gradient:"gb4" },
+      { sym:"Δ",  cat:"future",   catColor:"col-maroon", word:"2045 net zero?",    gradient:"gb6" },
+      { sym:"◉",  cat:"world",    catColor:"col-brown",  word:"is anyone home?",   gradient:"gb2" },
+    ]
+  },
+
+];
+
+/* ── RENDERER ── */
+const feed = document.getElementById('feed');
+document.getElementById('wall-count').textContent = WALLS.length;
+
+WALLS.forEach((wall, wi) => {
+  const total = wall.tiles.length;
+  let flipped = 0;
+
+  const section = document.createElement('div');
+  section.className = 'wall';
+  section.innerHTML = `
+    <div class="wall-meta">
+      <span class="wall-tag ${wall.tagColor}">${wall.tag}</span>
+      <span class="wall-date">${wall.date}</span>
+    </div>
+    <p class="wall-teaser">${wall.teaser}</p>
+    <p class="wall-hint">${wall.hint}</p>
+    <div class="tile-grid" id="grid-${wi}"></div>
+    <div class="wall-bottom">
+      <div class="w-progress">revealed <b id="cnt-${wi}">0</b> / ${total}</div>
+      <button class="w-reset" id="rst-${wi}">reset</button>
+    </div>
+    <div class="w-reveal ${wall.revealColor}" id="rev-${wi}">
+      <p>${wall.reveal}</p>
+      <a href="https://eturivarsha.github.io/MPL/" target="_blank" class="${wall.ctaColor}">
+        build your presence with MPL →
+      </a>
+    </div>
+  `;
+
+  if (wi < WALLS.length - 1) {
+    const div = document.createElement('div');
+    div.className = 'wall-divider';
+    section.appendChild(div);
+  }
+
+  feed.appendChild(section);
+
+  const grid    = document.getElementById(`grid-${wi}`);
+  const counter = document.getElementById(`cnt-${wi}`);
+  const reveal  = document.getElementById(`rev-${wi}`);
+  const resetBtn= document.getElementById(`rst-${wi}`);
+
+  wall.tiles.forEach(t => {
+    const wrap = document.createElement('div');
+    wrap.className = 't-wrap';
+    wrap.setAttribute('aria-label', t.word);
+    wrap.innerHTML = `
+      <div class="t-inner">
+        <div class="t-front">
+          <div class="t-sym ${t.catColor}">${t.sym}</div>
+          <div class="t-cat ${t.catColor}">${t.cat}</div>
+        </div>
+        <div class="t-back ${t.gradient}">
+          <div class="t-dot"></div>
+          <div class="t-word">${t.word}</div>
+        </div>
+      </div>`;
+    wrap.addEventListener('click', () => {
+      if (wrap.classList.contains('flipped')) return;
+      wrap.classList.add('flipped');
+      flipped++;
+      counter.textContent = flipped;
+      if (flipped === total) reveal.style.display = 'block';
+    });
+    grid.appendChild(wrap);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    grid.querySelectorAll('.t-wrap').forEach(w => w.classList.remove('flipped'));
+    flipped = 0;
+    counter.textContent = '0';
+    reveal.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>
