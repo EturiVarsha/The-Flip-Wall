@@ -284,6 +284,48 @@
     .col-sky     { color: #38bdf8; }
     .col-aurora  { color: #818cf8; }
 
+
+    /* ── GREEN / YELLOW / LIGHT-GREEN aurora gradients ── */
+    .gbg0 { background: linear-gradient(135deg,#0a1e0a,#0d3015); }
+    .gbg1 { background: linear-gradient(135deg,#0d2a10,#153d18); }
+    .gbg2 { background: linear-gradient(135deg,#0a2810,#0d3818); }
+    .gbg3 { background: linear-gradient(135deg,#051a08,#0a2a10); }
+    .gbg4 { background: linear-gradient(135deg,#0a2012,#153020); }
+    .gbg5 { background: linear-gradient(135deg,#102808,#183815); }
+    .gbg6 { background: linear-gradient(135deg,#0d2505,#154010); }
+    .gbg7 { background: linear-gradient(135deg,#082010,#0d3018); }
+    .gbg8 { background: linear-gradient(135deg,#0a1808,#102805); }
+    .gbg9 { background: linear-gradient(135deg,#051505,#0a2508); }
+
+    .gby0 { background: linear-gradient(135deg,#1e1800,#2e2500); }
+    .gby1 { background: linear-gradient(135deg,#2a2000,#3a2e00); }
+    .gby2 { background: linear-gradient(135deg,#1a1600,#282000); }
+    .gby3 { background: linear-gradient(135deg,#251e00,#352a00); }
+    .gby4 { background: linear-gradient(135deg,#201800,#302800); }
+
+    .gblg0 { background: linear-gradient(135deg,#0a280a,#153515); }
+    .gblg1 { background: linear-gradient(135deg,#102010,#1a3018); }
+    .gblg2 { background: linear-gradient(135deg,#0d250d,#184018); }
+    .gblg3 { background: linear-gradient(135deg,#082008,#103010); }
+    .gblg4 { background: linear-gradient(135deg,#0a2a0a,#154520); }
+
+    /* green/yellow tag, reveal, cta variants */
+    .tag-deepgreen  { background: rgba(10,46,10,0.1);  color: #14532d; border: 1px solid rgba(10,46,10,0.25); }
+    .tag-gold       { background: rgba(46,37,0,0.1);   color: #78350f; border: 1px solid rgba(46,37,0,0.25); }
+    .tag-sage       { background: rgba(15,40,15,0.1);  color: #166534; border: 1px solid rgba(15,40,15,0.25); }
+    .reveal-deepgreen { background: linear-gradient(135deg,#0a1e0a,#0d3015); }
+    .reveal-gold      { background: linear-gradient(135deg,#1e1800,#2e2500); }
+    .reveal-sage      { background: linear-gradient(135deg,#0a280a,#153515); }
+    .cta-deepgreen  { background: linear-gradient(90deg,#15803d,#166534); }
+    .cta-gold       { background: linear-gradient(90deg,#b45309,#92400e); }
+    .cta-sage       { background: linear-gradient(90deg,#16a34a,#15803d); }
+
+    /* green/yellow symbol colors */
+    .col-forest  { color: #16a34a; }
+    .col-gold    { color: #ca8a04; }
+    .col-lime    { color: #65a30d; }
+    .col-sage    { color: #4ade80; }
+
     /* ── WALL FOOTER ── */
     .wall-bottom {
       margin-top:12px;
@@ -402,7 +444,7 @@
     </p>
     <div class="hero-stats">
       <div class="h-stat">
-        <strong id="wall-count">6</strong>
+        <strong id="wall-count">9</strong>
         <span>walls live</span>
       </div>
       <div class="h-stat">
@@ -453,6 +495,98 @@
 const WALLS = [
 
   /* ── ADD NEW WALLS AT THE TOP ── */
+
+  /* ── WALL 9: Modi × Italy + Tour Results ── */
+  {
+    tag:         "India · Italy · Tour 2026",
+    tagColor:    "tag-sage",
+    date:        "22 May 2026",
+    teaser:      "40 billion reasons it went well.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-sage",
+    ctaColor:    "cta-sage",
+    reveal:      "<strong>$40 billion. 5 nations. 6 days.</strong> Modi's May tour was India's biggest diplomatic sprint of 2026. Italy signed a Special Strategic Partnership. Companies worth $2.7 trillion showed up. India didn't just visit — it arrived.",
+    tiles: [
+      { sym:"◉",  cat:"Italy",    catColor:"col-sage",   word:"special partner",   gradient:"gblg0" },
+      { sym:"✦",  cat:"Meloni",   catColor:"col-gold",   word:"Modi meets",        gradient:"gby1"  },
+      { sym:"⬡",  cat:"IMEEC",    catColor:"col-forest", word:"corridor push",     gradient:"gbg3"  },
+      { sym:"Σ",  cat:"total",    catColor:"col-sage",   word:"$40B secured",      gradient:"gblg2" },
+      { sym:"∞",  cat:"firms",    catColor:"col-gold",   word:"$2.7T present",     gradient:"gby3"  },
+      { sym:"⟰",  cat:"tour",     catColor:"col-forest", word:"5 nations 6 days",  gradient:"gbg1"  },
+      { sym:"△",  cat:"energy",   catColor:"col-sage",   word:"supply locked",     gradient:"gblg4" },
+      { sym:"α",  cat:"tech",     catColor:"col-gold",   word:"deals signed",      gradient:"gby0"  },
+      { sym:"λ",  cat:"minerals", catColor:"col-forest", word:"critical pacts",    gradient:"gbg5"  },
+      { sym:"◈",  cat:"defence",  catColor:"col-sage",   word:"partnerships new",  gradient:"gblg1" },
+      { sym:"π",  cat:"invest",   catColor:"col-gold",   word:"wave incoming",     gradient:"gby2"  },
+      { sym:"⊞",  cat:"peace",    catColor:"col-forest", word:"West Asia push",    gradient:"gbg7"  },
+      { sym:"⟡",  cat:"India",    catColor:"col-sage",   word:"global player",     gradient:"gblg3" },
+      { sym:"Ω",  cat:"message",  catColor:"col-gold",   word:"we are here",       gradient:"gby4"  },
+      { sym:"∴",  cat:"next",     catColor:"col-forest", word:"who's next?",       gradient:"gbg9"  },
+      { sym:"⌬",  cat:"verdict",  catColor:"col-sage",   word:"India arrived",     gradient:"gblg0" },
+    ]
+  },
+
+  /* ── WALL 8: Modi × Netherlands + Sweden + Norway ── */
+  {
+    tag:         "India · Europe · May 2026",
+    tagColor:    "tag-gold",
+    date:        "21 May 2026",
+    teaser:      "From chips to ships. India came, signed, and stayed.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-gold",
+    ctaColor:    "cta-gold",
+    reveal:      "<strong>17 deals with the Netherlands. A new strategic partnership with Sweden. Norway — visited after 43 years.</strong> India signed across semiconductors, AI, green hydrogen, defence and climate. The Nordic world just got closer to New Delhi.",
+    tiles: [
+      { sym:"⬡",  cat:"NL",       catColor:"col-gold",   word:"17 deals signed",  gradient:"gby0"  },
+      { sym:"◈",  cat:"chips",    catColor:"col-forest", word:"semiconductors",    gradient:"gbg2"  },
+      { sym:"∼",  cat:"AI",       catColor:"col-gold",   word:"roadmap agreed",    gradient:"gby3"  },
+      { sym:"△",  cat:"hydrogen", catColor:"col-lime",   word:"green deal NL",     gradient:"gblg2" },
+      { sym:"⊕",  cat:"defence",  catColor:"col-gold",   word:"NL cooperation",   gradient:"gby1"  },
+      { sym:"✦",  cat:"Sweden",   catColor:"col-forest", word:"strategic partner", gradient:"gbg4"  },
+      { sym:"Σ",  cat:"Nordic",   catColor:"col-gold",   word:"summit 3rd ed.",    gradient:"gby4"  },
+      { sym:"⟁",  cat:"Norway",   catColor:"col-lime",   word:"43 year gap",       gradient:"gblg4" },
+      { sym:"α",  cat:"king",     catColor:"col-gold",   word:"royals met Modi",   gradient:"gby2"  },
+      { sym:"∞",  cat:"honours",  catColor:"col-forest", word:"awards given",      gradient:"gbg6"  },
+      { sym:"π",  cat:"climate",  catColor:"col-gold",   word:"cooperation yes",   gradient:"gby0"  },
+      { sym:"⌇",  cat:"trade",    catColor:"col-lime",   word:"expanding fast",    gradient:"gblg1" },
+      { sym:"◉",  cat:"water",    catColor:"col-gold",   word:"Dutch tech deal",   gradient:"gby3"  },
+      { sym:"λ",  cat:"startups", catColor:"col-forest", word:"innovation hubs",   gradient:"gbg8"  },
+      { sym:"⟡",  cat:"signals",  catColor:"col-gold",   word:"Europe trusts IN",  gradient:"gby1"  },
+      { sym:"Ω",  cat:"verdict",  catColor:"col-lime",   word:"chips + ships",     gradient:"gblg3" },
+    ]
+  },
+
+  /* ── WALL 7: Modi × UAE ── */
+  {
+    tag:         "India · UAE · May 2026",
+    tagColor:    "tag-deepgreen",
+    date:        "15 May 2026",
+    teaser:      "They call it brotherhood. $5 billion says so too.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-deepgreen",
+    ctaColor:    "cta-deepgreen",
+    reveal:      "<strong>UAE is India's third-largest trade partner.</strong> 4.5 million Indians call it home. Modi called MBZ his brother — and signed deals on LPG, crude storage, defence, space, AI and food safety. West Asia is burning. India chose diplomacy.",
+    tiles: [
+      { sym:"∞",  cat:"trade",    catColor:"col-forest", word:"partner no. 3",     gradient:"gbg0"  },
+      { sym:"△",  cat:"Indians",  catColor:"col-sage",   word:"4.5M live there",   gradient:"gblg0" },
+      { sym:"⊘",  cat:"LPG",      catColor:"col-gold",   word:"supply secured",    gradient:"gby2"  },
+      { sym:"◈",  cat:"crude",    catColor:"col-forest", word:"storage deal",      gradient:"gbg3"  },
+      { sym:"✦",  cat:"invest",   catColor:"col-sage",   word:"$5B from UAE",      gradient:"gblg2" },
+      { sym:"⟡",  cat:"defence",  catColor:"col-gold",   word:"strategic pact",    gradient:"gby0"  },
+      { sym:"α",  cat:"space",    catColor:"col-forest", word:"joint launch plan",  gradient:"gbg5"  },
+      { sym:"Δ",  cat:"Dholera",  catColor:"col-sage",   word:"UAE invests IN",    gradient:"gblg4" },
+      { sym:"λ",  cat:"HPCL",     catColor:"col-gold",   word:"Adnoc gas deal",    gradient:"gby3"  },
+      { sym:"⊞",  cat:"food",     catColor:"col-forest", word:"safety MoU",        gradient:"gbg7"  },
+      { sym:"π",  cat:"super",    catColor:"col-sage",   word:"computing tie",     gradient:"gblg1" },
+      { sym:"⌇",  cat:"peace",    catColor:"col-gold",   word:"India stands firm",  gradient:"gby1"  },
+      { sym:"≋",  cat:"attacks",  catColor:"col-forest", word:"UAE condemned",     gradient:"gbg2"  },
+      { sym:"◉",  cat:"MBZ",      catColor:"col-sage",   word:"Modi's brother",    gradient:"gblg3" },
+      { sym:"⟰",  cat:"visits",   catColor:"col-gold",   word:"7th time Modi",     gradient:"gby4"  },
+      { sym:"⊕",  cat:"verdict",  catColor:"col-forest", word:"Gulf holds firm",   gradient:"gbg9"  },
+    ]
+  },
+
+
 
   /* ── WALL 6: Football Fever ── */
   {
