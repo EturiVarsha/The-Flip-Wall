@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Flip Wall — Current Affairs You Flip, Not Scroll | by Million Phrases Labs</title>
+  <meta name="description" content="The Flip Wall — current affairs you flip, not scroll. Interactive news walls on India, climate, football, global energy, Africa and more. By Million Phrases Labs.">
+  <meta name="keywords" content="current affairs, India news, heatwave India, Nepal climate, FIFA World Cup 2026, Modi diplomacy, Africa news, global gas crisis, interactive news, flip wall, Million Phrases Labs">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Varsha Eturi, Million Phrases Labs">
+  <link rel="canonical" href="https://eturivarsha.github.io/The-Flip-Wall/">
+  <meta property="og:title" content="The Flip Wall · Current Affairs You Flip, Not Scroll">
+  <meta property="og:description" content="Interactive news walls on India, climate, football, energy and more. Flip every tile to find the story. By Million Phrases Labs.">
+  <meta property="og:url" content="https://eturivarsha.github.io/The-Flip-Wall/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://eturivarsha.github.io/The-Flip-Wall/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Flip Wall · Current Affairs You Flip, Not Scroll">
+  <meta name="twitter:description" content="Interactive news walls on India, climate, football, energy and more. By Million Phrases Labs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:   #fdf5e8;
+      --maroon:  #7f1d1d;
+      --orange:  #c2440a;
+      --yellow:  #b45309;
+      --ink:     #1c0a04;
+      --muted:   #7a3a1a;
+      --hint:    #a05a30;
+      --border:  rgba(127,29,29,0.14);
+      --font-d:  'Playfair Display', Georgia, serif;
+      --font-m:  'Libre Franklin', Arial, sans-serif;
+      --nav-h:   64px;
+    }
+
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+      min-height: 100vh;
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+      background:
+        radial-gradient(ellipse 80% 60% at 0%   0%,   rgba(194,68,10,0.22)  0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 100% 0%,   rgba(127,29,29,0.20)  0%, transparent 60%),
+        radial-gradient(ellipse 90% 60% at 100% 100%,  rgba(217,119,6,0.22)  0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 0%   100%,  rgba(194,68,10,0.15)  0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50%  50%,   rgba(255,237,200,0.7) 0%, transparent 70%),
+        #fdf5e8;
+      background-attachment: fixed;
+    }
+
+    a { text-decoration: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #fdf0d8; }
+    ::-webkit-scrollbar-thumb { background: var(--maroon); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(253,245,232,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-d);
+      font-size: 1rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--ink);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .nav-logo .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.5; transform:scale(0.75); }
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-right a {
+      font-size: 0.68rem; color: var(--hint);
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--maroon); }
+
+    .nav-mpl {
+      color: var(--maroon) !important;
+      border: 1px solid rgba(127,29,29,0.35) !important;
+      padding: 0.35rem 0.9rem; border-radius: 4px;
+      transition: background 0.2s !important; font-weight: 700 !important;
+    }
+    .nav-mpl:hover { background: rgba(127,29,29,0.08) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 54vh;
+      display: flex; align-items: flex-end;
+      padding: calc(var(--nav-h) + 3.5rem) 5% 3.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .hero-inner { max-width: 860px; position: relative; z-index: 1; }
+
+    .hero-label {
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .hero-label::before { content:''; width:24px; height:1px; background:currentColor; }
+
+    .hero-h1 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800; line-height: 0.92;
+      letter-spacing: -0.04em; margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+    .hero-h1 .c-maroon { color: var(--maroon); }
+    .hero-h1 .c-orange { color: var(--orange); }
+    .hero-h1 .c-yellow { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 0.78rem; color: var(--hint);
+      letter-spacing: 0.05em; line-height: 1.8; max-width: 460px;
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap;
+    }
+    .h-stat strong {
+      display: block; font-family: var(--font-d);
+      font-size: 1.6rem; font-weight: 800; color: var(--maroon); line-height: 1;
+    }
+    .h-stat span {
+      font-size: 0.6rem; color: var(--hint);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    /* ── FEED ── */
+    .feed {
+      max-width: 900px; margin: 0 auto;
+      padding: 4rem 5%;
+      display: flex; flex-direction: column; gap: 5rem;
+    }
+
+    /* ── WALL META ── */
+    .wall-meta {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;
+    }
+
+    .wall-tag {
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 3px; font-weight: 700;
+    }
+    .tag-maroon { background: rgba(127,29,29,0.1);  color: #7f1d1d; border: 1px solid rgba(127,29,29,0.25); }
+    .tag-orange { background: rgba(194,68,10,0.1);  color: #9a3307; border: 1px solid rgba(194,68,10,0.25); }
+    .tag-yellow { background: rgba(180,83,9,0.1);   color: #92400e; border: 1px solid rgba(180,83,9,0.25); }
+    .tag-ink    { background: rgba(28,10,4,0.07);   color: #3d1a0a; border: 1px solid rgba(28,10,4,0.15); }
+
+    .wall-date {
+      font-size: 0.58rem; color: var(--hint);
+      letter-spacing: 0.1em; text-transform: uppercase; padding-top: 5px;
+    }
+
+    .wall-teaser {
+      font-family: var(--font-d);
+      font-size: clamp(1.1rem, 3vw, 1.65rem);
+      font-weight: 700; color: var(--ink);
+      line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.02em;
+    }
+
+    .wall-hint {
+      font-size: 0.62rem; color: var(--hint);
+      letter-spacing: 0.08em; margin-bottom: 1.25rem;
+    }
+
+    /* ── TILE GRID ── */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 560px) {
+      .tile-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    .t-wrap { perspective: 900px; aspect-ratio: 1/1; cursor: pointer; min-height: 80px; }
+
+    .t-inner {
+      width:100%; height:100%; position:relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+      border-radius: 10px;
+    }
+    .t-wrap.flipped .t-inner { transform: rotateY(180deg); }
+
+    .t-front, .t-back {
+      position:absolute; inset:0; border-radius:10px;
+      backface-visibility: hidden;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:10px 8px; box-sizing:border-box; text-align:center;
+    }
+
+    /* front: warm cream with maroon/orange tint */
+    .t-front {
+      background: rgba(255,248,235,0.92);
+      border: 1px solid rgba(180,83,9,0.2);
+    }
+    .t-front .t-sym {
+      font-size: clamp(20px,4vw,30px);
+      line-height:1; user-select:none; margin-bottom:5px;
+    }
+    .t-front .t-cat {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: clamp(6px,1.1vw,7.5px);
+      letter-spacing:0.07em; text-transform:uppercase; line-height:1.3;
+    }
+
+    /* back: rich dark gradients — tile backs stay dark for contrast */
+    .t-back {
+      transform: rotateY(180deg);
+      border:none; gap:5px;
+    }
+    .t-back .t-dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3); }
+    .t-back .t-word {
+      font-family: 'Playfair Display', serif; font-weight:900;
+      font-size: clamp(11px,2.8vw,15px);
+      color:#fff; text-transform:uppercase;
+      letter-spacing:0.06em; line-height:1.3;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    /* symbol colors — warm palette on cream */
+    .col-maroon { color: #9b1c1c; }
+    .col-orange { color: #c2440a; }
+    .col-yellow { color: #b45309; }
+    .col-brown  { color: #92400e; }
+
+    /* back tile gradients — dark rich tones */
+    .gb0 { background: linear-gradient(135deg,#3b0d0d,#5a1a0a); }
+    .gb1 { background: linear-gradient(135deg,#5a1a0a,#2e1500); }
+    .gb2 { background: linear-gradient(135deg,#2e1500,#3b0d0d); }
+    .gb3 { background: linear-gradient(135deg,#4a0d0d,#6b2200); }
+    .gb4 { background: linear-gradient(135deg,#6b2200,#3a1a00); }
+    .gb5 { background: linear-gradient(135deg,#3a1a00,#4a0d0d); }
+    .gb6 { background: linear-gradient(135deg,#5c1515,#7a2800); }
+    .gb7 { background: linear-gradient(135deg,#7a2800,#4a1a00); }
+    .gb8 { background: linear-gradient(135deg,#3b1010,#5c2200); }
+    .gb9 { background: linear-gradient(135deg,#4d1a00,#6b1010); }
+
+
+    /* aurora blue gradients — night → ocean → sky, subtle transition from warm darks */
+    .gbn0 { background: linear-gradient(135deg,#0e0d28,#1a1040); }
+    .gbn1 { background: linear-gradient(135deg,#0a1a3c,#0d2255); }
+    .gbn2 { background: linear-gradient(135deg,#0d2040,#0a2e5a); }
+    .gbn3 { background: linear-gradient(135deg,#082535,#0a3248); }
+    .gbn4 { background: linear-gradient(135deg,#0a2845,#0d3860); }
+    .gbn5 { background: linear-gradient(135deg,#0d1f3d,#153560); }
+    .gbn6 { background: linear-gradient(135deg,#0a2245,#0d3858); }
+    .gbn7 { background: linear-gradient(135deg,#082030,#0a2e50); }
+    .gbn8 { background: linear-gradient(135deg,#080f28,#0a1c40); }
+    .gbn9 { background: linear-gradient(135deg,#0d1535,#0a2248); }
+
+    /* blue tag/reveal/cta variants */
+    .tag-nightblue  { background: rgba(13,21,53,0.1);  color: #1e3a8a; border: 1px solid rgba(13,21,53,0.25); }
+    .tag-oceanblue  { background: rgba(10,26,60,0.1);  color: #1e40af; border: 1px solid rgba(10,26,60,0.25); }
+    .tag-skyblue    { background: rgba(13,32,64,0.1);  color: #1d4ed8; border: 1px solid rgba(13,32,64,0.25); }
+    .reveal-nightblue { background: linear-gradient(135deg,#0e0d28,#0a1640); }
+    .reveal-oceanblue { background: linear-gradient(135deg,#0a1a3c,#082535); }
+    .reveal-skyblue   { background: linear-gradient(135deg,#0a2040,#0d3060); }
+    .cta-nightblue  { background: linear-gradient(90deg,#1e3a8a,#1e40af); }
+    .cta-oceanblue  { background: linear-gradient(90deg,#0369a1,#075985); }
+    .cta-skyblue    { background: linear-gradient(90deg,#2563eb,#1d4ed8); }
+
+    /* blue symbol colors */
+    .col-night   { color: #3b5bdb; }
+    .col-ocean   { color: #0284c7; }
+    .col-sky     { color: #38bdf8; }
+    .col-aurora  { color: #818cf8; }
+
+
+    /* ── GREEN / YELLOW / LIGHT-GREEN aurora gradients ── */
+    .gbg0 { background: linear-gradient(135deg,#0a1e0a,#0d3015); }
+    .gbg1 { background: linear-gradient(135deg,#0d2a10,#153d18); }
+    .gbg2 { background: linear-gradient(135deg,#0a2810,#0d3818); }
+    .gbg3 { background: linear-gradient(135deg,#051a08,#0a2a10); }
+    .gbg4 { background: linear-gradient(135deg,#0a2012,#153020); }
+    .gbg5 { background: linear-gradient(135deg,#102808,#183815); }
+    .gbg6 { background: linear-gradient(135deg,#0d2505,#154010); }
+    .gbg7 { background: linear-gradient(135deg,#082010,#0d3018); }
+    .gbg8 { background: linear-gradient(135deg,#0a1808,#102805); }
+    .gbg9 { background: linear-gradient(135deg,#051505,#0a2508); }
+
+    .gby0 { background: linear-gradient(135deg,#1e1800,#2e2500); }
+    .gby1 { background: linear-gradient(135deg,#2a2000,#3a2e00); }
+    .gby2 { background: linear-gradient(135deg,#1a1600,#282000); }
+    .gby3 { background: linear-gradient(135deg,#251e00,#352a00); }
+    .gby4 { background: linear-gradient(135deg,#201800,#302800); }
+
+    .gblg0 { background: linear-gradient(135deg,#0a280a,#153515); }
+    .gblg1 { background: linear-gradient(135deg,#102010,#1a3018); }
+    .gblg2 { background: linear-gradient(135deg,#0d250d,#184018); }
+    .gblg3 { background: linear-gradient(135deg,#082008,#103010); }
+    .gblg4 { background: linear-gradient(135deg,#0a2a0a,#154520); }
+
+    /* green/yellow tag, reveal, cta variants */
+    .tag-deepgreen  { background: rgba(10,46,10,0.1);  color: #14532d; border: 1px solid rgba(10,46,10,0.25); }
+    .tag-gold       { background: rgba(46,37,0,0.1);   color: #78350f; border: 1px solid rgba(46,37,0,0.25); }
+    .tag-sage       { background: rgba(15,40,15,0.1);  color: #166534; border: 1px solid rgba(15,40,15,0.25); }
+    .reveal-deepgreen { background: linear-gradient(135deg,#0a1e0a,#0d3015); }
+    .reveal-gold      { background: linear-gradient(135deg,#1e1800,#2e2500); }
+    .reveal-sage      { background: linear-gradient(135deg,#0a280a,#153515); }
+    .cta-deepgreen  { background: linear-gradient(90deg,#15803d,#166534); }
+    .cta-gold       { background: linear-gradient(90deg,#b45309,#92400e); }
+    .cta-sage       { background: linear-gradient(90deg,#16a34a,#15803d); }
+
+    /* green/yellow symbol colors */
+    .col-forest  { color: #16a34a; }
+    .col-gold    { color: #ca8a04; }
+    .col-lime    { color: #65a30d; }
+    .col-sage    { color: #4ade80; }
+
+
+    /* ── ORANGE / YELLOW / PINK gradients — India ground reality ── */
+    .gbo0 { background: linear-gradient(135deg,#3d1200,#5c1e00); }
+    .gbo1 { background: linear-gradient(135deg,#4a1500,#6b2200); }
+    .gbo2 { background: linear-gradient(135deg,#2e0e00,#4a1800); }
+    .gbo3 { background: linear-gradient(135deg,#3a1000,#5a1a00); }
+    .gbo4 { background: linear-gradient(135deg,#501800,#701f00); }
+
+    .gbyo0 { background: linear-gradient(135deg,#2a2200,#3d3200); }
+    .gbyo1 { background: linear-gradient(135deg,#1e1a00,#302a00); }
+    .gbyo2 { background: linear-gradient(135deg,#352a00,#4a3800); }
+    .gbyo3 { background: linear-gradient(135deg,#281e00,#403200); }
+    .gbyo4 { background: linear-gradient(135deg,#221c00,#352800); }
+
+    .gbp0 { background: linear-gradient(135deg,#3d0a28,#5c1535); }
+    .gbp1 { background: linear-gradient(135deg,#2e0820,#4a1230); }
+    .gbp2 { background: linear-gradient(135deg,#4a0d30,#6b1540); }
+    .gbp3 { background: linear-gradient(135deg,#350a25,#50102e); }
+    .gbp4 { background: linear-gradient(135deg,#280818,#3d1025); }
+
+    /* orange/yellow/pink tag, reveal, cta */
+    .tag-saffron  { background: rgba(234,88,12,0.1);  color: #9a3e00; border: 1px solid rgba(234,88,12,0.25); }
+    .tag-marigold { background: rgba(202,138,4,0.1);  color: #854d0e; border: 1px solid rgba(202,138,4,0.25); }
+    .tag-rose     { background: rgba(219,39,119,0.1); color: #9d174d; border: 1px solid rgba(219,39,119,0.25); }
+    .reveal-saffron  { background: linear-gradient(135deg,#3d1200,#501800); }
+    .reveal-marigold { background: linear-gradient(135deg,#2a2200,#3a2e00); }
+    .reveal-rose     { background: linear-gradient(135deg,#3d0a28,#4a0d30); }
+    .cta-saffron  { background: linear-gradient(90deg,#ea580c,#c2440a); }
+    .cta-marigold { background: linear-gradient(90deg,#ca8a04,#a16207); }
+    .cta-rose     { background: linear-gradient(90deg,#db2777,#be185d); }
+
+    /* India region symbol colors */
+    .col-saffron  { color: #f97316; }
+    .col-marigold { color: #eab308; }
+    .col-rose     { color: #f472b6; }
+    .col-tangerine{ color: #fb923c; }
+
+    /* ── WALL FOOTER ── */
+    .wall-bottom {
+      margin-top:12px;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:8px;
+    }
+    .w-progress {
+      font-size:0.6rem; color:var(--hint); letter-spacing:0.1em;
+    }
+    .w-progress b { color: var(--maroon); }
+
+    .w-reset {
+      font-family:var(--font-m); font-size:0.58rem; color:var(--hint);
+      background:transparent; border:1px solid var(--border);
+      border-radius:4px; padding:5px 12px; cursor:pointer;
+      letter-spacing:0.1em; text-transform:uppercase; transition:all 0.2s;
+    }
+    .w-reset:hover { color:var(--maroon); border-color:rgba(127,29,29,0.35); }
+
+    /* ── REVEAL ── */
+    .w-reveal {
+      margin-top:14px; border-radius:10px; padding:18px 20px;
+      display:none; border:1px solid rgba(127,29,29,0.2);
+    }
+    .reveal-maroon { background: linear-gradient(135deg,#4a0d0d,#3b0a08); }
+    .reveal-orange { background: linear-gradient(135deg,#6b2200,#4a1200); }
+    .reveal-yellow { background: linear-gradient(135deg,#3a1800,#5c2800); }
+
+    .w-reveal p {
+      font-size:0.7rem; color:rgba(255,240,220,0.7);
+      line-height:1.85; letter-spacing:0.04em; margin-bottom:14px;
+    }
+    .w-reveal strong { color:#fff; font-weight:700; }
+
+    .w-reveal a {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-family:var(--font-d); font-weight:800; font-size:0.78rem;
+      color:#fff; padding:10px 20px; border-radius:6px;
+      letter-spacing:0.04em; transition:opacity 0.2s;
+    }
+    .w-reveal a:hover { opacity:0.85; }
+    .cta-maroon { background: linear-gradient(90deg,#9b1c1c,#7f1d1d); }
+    .cta-orange { background: linear-gradient(90deg,#c2440a,#9a3307); }
+    .cta-yellow { background: linear-gradient(90deg,#b45309,#92400e); }
+
+    /* ── DIVIDER ── */
+    .wall-divider {
+      height:1px; margin-top:5rem;
+      background:linear-gradient(90deg,transparent,rgba(127,29,29,0.2),transparent);
+    }
+
+    /* ── ABOUT ── */
+    .about-strip {
+      border-top:1px solid var(--border);
+      padding:3rem 5%; max-width:900px; margin:0 auto;
+    }
+    .about-strip .eyebrow {
+      font-size:0.6rem; color:var(--orange); letter-spacing:0.18em;
+      text-transform:uppercase; margin-bottom:0.75rem;
+    }
+    .about-strip p {
+      font-family:var(--font-d); font-weight:700;
+      font-size:clamp(1rem,2.5vw,1.3rem); color:var(--ink);
+      line-height:1.45; max-width:600px;
+    }
+    .about-strip a { color:var(--maroon); border-bottom:1px solid rgba(127,29,29,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top:1px solid var(--border);
+      padding:2.5rem 5%; text-align:center;
+      background:rgba(127,29,29,0.04);
+    }
+    footer p {
+      font-size:0.62rem; color:var(--hint);
+      letter-spacing:0.1em; line-height:2.2;
+    }
+    footer a { color:var(--maroon); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:480px) {
+      .nav-right .hide-mob { display:none; }
+      .feed { padding:2.5rem 4%; gap:3.5rem; }
+      .hero-h1 { letter-spacing:-0.03em; }
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Flip Wall",
+    "alternateName": "The Flip Wall by MPL",
+    "url": "https://eturivarsha.github.io/The-Flip-Wall/",
+    "description": "Current affairs you flip, not scroll. Interactive news walls on India, climate, football, global energy, Africa and more.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Million Phrases Labs",
+      "url": "https://eturivarsha.github.io/MPL/",
+      "founder": {
+        "@type": "Person",
+        "name": "Varsha Eturi"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://eturivarsha.github.io/The-Flip-Wall/",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="dot"></span>
+    The Flip Wall
+  </div>
+  <div style="display:none;" aria-hidden="true">The Flip Wall by Million Phrases Labs — current affairs interactive news walls</div>
+  <div class="nav-right">
+    <a href="#feed" class="hide-mob">walls</a>
+    <a href="#about" class="hide-mob">about</a>
+    <a href="https://eturivarsha.github.io/MPL/" target="_blank" class="nav-mpl">by MPL →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1 style="font-family:var(--font-d);font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;opacity:0.85;">The Flip Wall</h1>
+    <p class="hero-label">A new kind of news</p>
+    <h1 class="hero-h1">
+      Flip<span class="c-orange">.</span><br>
+      <span class="c-maroon">Find</span><span class="c-orange">.</span><br>
+      <span class="c-yellow">Know</span><span class="c-orange">.</span>
+    </h1>
+    <p class="hero-sub">
+      No headlines. No scroll bait. Just tiles — and what's hiding behind them.
+      Current affairs, one flip at a time.
+    </p>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <strong id="wall-count">14</strong>
+        <span>walls live</span>
+      </div>
+      <div class="h-stat">
+        <strong>Daily</strong>
+        <span>new walls</span>
+      </div>
+      <div class="h-stat">
+        <strong>0 ads</strong>
+        <span>ever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALLS FEED -->
+<!-- SEO static content — readable by Google -->
+<section style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-hidden="true">
+  <h1>The Flip Wall — Current Affairs You Flip, Not Scroll</h1>
+  <p>An interactive news experience by Million Phrases Labs. Each wall covers a different current affairs topic. Flip every tile to reveal the facts. No headlines, no scroll bait — just truth, one tile at a time.</p>
+  <h2>North India Heatwave 2026</h2>
+  <p>Banda in Uttar Pradesh recorded 48 degrees Celsius. Sixteen cities crossed 46 degrees in a single day. Punjab, Haryana, Delhi and Rajasthan are under severe heatwave alerts. Nights are 5 degrees above normal. The monsoon will not reach Delhi until June 25-30, 2026. North India is in the grip of one of its worst pre-monsoon heatwaves in recent memory.</p>
+  <h2>Northeast India — Floods and Conflict 2026</h2>
+  <p>Assam is on flood watch as pre-monsoon rains arrive. Manipur's ethnic conflict continues after three years. Nagaland's National Highway 2 collapsed in a landslide near Phesama village, stranding over a hundred trucks. Arunachal Pradesh, Meghalaya and Tripura are under heavy rainfall alerts from the India Meteorological Department.</p>
+  <h2>Middle India — Heat and Storms 2026</h2>
+  <p>Khajuraho in Madhya Pradesh recorded 47.4 degrees Celsius. Bihar is under an orange rain alert. Odisha faces hot days and storm nights. West Bengal is experiencing squalls reaching 60 kilometres per hour. The monsoon will reach Central India between June 10 and 18, 2026.</p>
+  <h2>South India Weather May 2026</h2>
+  <p>Kerala will receive the monsoon by May 26, 2026 — the earliest in the country. Tamil Nadu recorded 16 centimetres of rain in a single day at Neyyoor in Kanyakumari. Karnataka is experiencing thundersqualls reaching 70 kilometres per hour. Kerala elections saw CPI-M lose power. Andhra Pradesh Chief Minister Chandrababu Naidu announced cash incentives for families having a third or fourth child.</p>
+  <h2>West India — Maharashtra Gujarat Goa 2026</h2>
+  <p>Wardha in Maharashtra recorded 47.1 degrees Celsius. Mumbai will receive pre-monsoon showers by June 5. Gujarat will be the last state to receive the monsoon, between June 18 and 25. IPL 2026 ends on May 31 at Wankhede Stadium in Mumbai. The Vidarbha region is under severe heatwave conditions.</p>
+  <h2>Nepal Climate Crisis 2026</h2>
+  <p>Temperatures in the Hindu Kush Himalayas are rising 0.7 degrees Celsius faster than the global average. Thirty percent of Himalayan snow cover has been lost in three decades. Glacial Lake Outburst Floods threaten communities across Nepal. Nepal contributes only 0.08 percent of global carbon emissions yet bears severe climate consequences. The IEA has declared the situation a major crisis requiring immediate global action.</p>
+  <h2>Global Gas Policy and LNG Crisis 2026</h2>
+  <p>Twenty percent of global LNG supply disappeared after the closure of the Strait of Hormuz. QatarEnergy declared force majeure on its gas contracts. Europe entered the 2026 summer season with its lowest gas reserves since 2018. The International Energy Agency described the situation as the greatest energy security threat in history. The crisis is expected to keep global gas markets tight until 2030.</p>
+  <h2>FIFA World Cup 2026</h2>
+  <p>The 2026 FIFA World Cup kicks off on June 11 in Mexico City at Estadio Azteca. The tournament features 48 teams for the first time, hosted across the United States, Canada and Mexico, with 104 matches over 39 days. Iran's participation is uncertain amid the ongoing conflict. An Ebola outbreak is threatening DR Congo's squad preparation. The final will be held on July 19 at MetLife Stadium in New Jersey.</p>
+  <h2>Africa Current Affairs May 2026</h2>
+  <p>The World Health Organization declared an Ebola outbreak a global health emergency as cases spread across DR Congo and Uganda, with 528 suspected cases and 132 deaths. Kenya experienced a nationwide shutdown over fuel price protests. Malawi recorded the second highest fuel prices in the world at 3.83 dollars per litre. Niger suspended nine French media outlets. Islamic State accounted for 86 percent of global activity in the first quarter of 2026, concentrated across the Sahel region.</p>
+  <h2>Modi 5-Nation Tour May 2026</h2>
+  <p>Prime Minister Narendra Modi completed a five-nation tour covering UAE, Netherlands, Sweden, Norway and Italy from May 15 to 20, 2026. The tour secured an estimated investment pipeline of 40 billion dollars. The UAE committed 5 billion dollars in fresh investments. India and the Netherlands signed 17 deals covering semiconductors, artificial intelligence and green hydrogen. Sweden elevated ties to a Strategic Partnership. Italy and India established a Special Strategic Partnership. Norway was visited after 43 years.</p>
+</section>
+<!-- End SEO content -->
+
+<main class="feed" id="feed"></main>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <p class="eyebrow">About this wall</p>
+  <p>
+    <strong>The Flip Wall</strong> is a current affairs experiment by
+    <a href="https://eturivarsha.github.io/MPL/" target="_blank">Million Phrases Labs</a>.
+    Every wall is a story. Every tile is a fact. The Flip Wall updates daily.
+    No algorithms, no paywalls, no noise.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <strong>The Flip Wall</strong> · by <a href="https://eturivarsha.github.io/MPL/" target="_blank">Million Phrases Labs</a><br>
+    Current affairs you flip, not scroll.<br>
+    Updated daily · Varsha Eturi · <a href="https://eturivarsha.github.io/MPL/" target="_blank">millionphraseslabs.com</a>
+  </p>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   WALLS — add new walls at the TOP of this array.
+   tagColor: tag-maroon / tag-orange / tag-yellow / tag-ink
+   revealColor: reveal-maroon / reveal-orange / reveal-yellow
+   ctaColor: cta-maroon / cta-orange / cta-yellow
+   catColor: col-maroon / col-orange / col-yellow / col-brown
+   gradient: gb0 through gb9
+═══════════════════════════════════════════════════════════ */
+const WALLS = [
+
+  /* ── ADD NEW WALLS AT THE TOP ── */
+
+  /* ── WALL 14: West India — Maharashtra · Gujarat · Goa ── */
+  {
+    tag:         "West India · Ground Reality",
+    tagColor:    "tag-rose",
+    date:        "22 May 2026",
+    teaser:      "Mumbai is waiting. Gujarat is sweating. Goa is ready.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-rose",
+    ctaColor:    "cta-rose",
+    reveal:      "<strong>The west is a split screen.</strong> Vidarbha is recording 47°C. Mumbai gets pre-monsoon showers by June 5. Gujarat waits the longest — monsoon won't arrive till June 18-25. IPL ends May 31. Cricket before rain.",
+    tiles: [
+      { sym:"△",  cat:"Vidarbha",  catColor:"col-rose",     word:"47°C Wardha",       gradient:"gbp0" },
+      { sym:"∼",  cat:"Mumbai",    catColor:"col-saffron",  word:"rain by June 5",    gradient:"gbo3" },
+      { sym:"⊘",  cat:"Gujarat",   catColor:"col-marigold", word:"waits till June 25",gradient:"gbyo2"},
+      { sym:"✦",  cat:"IPL",       catColor:"col-rose",     word:"ends May 31",       gradient:"gbp2" },
+      { sym:"◈",  cat:"Konkan",    catColor:"col-saffron",  word:"moisture rising",   gradient:"gbo1" },
+      { sym:"⌇",  cat:"Goa",       catColor:"col-marigold", word:"monsoon June 7-10", gradient:"gbyo4"},
+      { sym:"⬡",  cat:"power",     catColor:"col-rose",     word:"grids stressed",    gradient:"gbp1" },
+      { sym:"∞",  cat:"heat",      catColor:"col-saffron",  word:"orange alert out",  gradient:"gbo4" },
+      { sym:"λ",  cat:"Fadnavis",  catColor:"col-marigold", word:"CM holds ground",   gradient:"gbyo0"},
+      { sym:"π",  cat:"Wankhede",  catColor:"col-rose",     word:"MI at home",        gradient:"gbp3" },
+      { sym:"⟡",  cat:"water",     catColor:"col-saffron",  word:"dams at 28%",       gradient:"gbo2" },
+      { sym:"Σ",  cat:"trade",     catColor:"col-marigold", word:"ports still busy",  gradient:"gbyo3"},
+      { sym:"Ω",  cat:"GIFT city", catColor:"col-rose",     word:"Gujarat tech hub",  gradient:"gbp4" },
+      { sym:"⊞",  cat:"Pune",      catColor:"col-saffron",  word:"metro expanding",   gradient:"gbo0" },
+      { sym:"∴",  cat:"monsoon",   catColor:"col-marigold", word:"the wait is real",  gradient:"gbyo1"},
+      { sym:"◉",  cat:"west",      catColor:"col-rose",     word:"holding its breath",gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 13: South India — Kerala · Karnataka · TN · AP · Telangana ── */
+  {
+    tag:         "South India · Ground Reality",
+    tagColor:    "tag-marigold",
+    date:        "22 May 2026",
+    teaser:      "The south is wet. The north is burning. Same country.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-marigold",
+    ctaColor:    "cta-marigold",
+    reveal:      "<strong>Kerala gets the monsoon first — May 26.</strong> Tamil Nadu already seeing 16cm in a day. While north India bakes above 46°C, the south is counting rain. Kerala just voted. CPI(M) lost. DMK and Congress are fighting. The south is never quiet.",
+    tiles: [
+      { sym:"∼",  cat:"Kerala",    catColor:"col-marigold", word:"monsoon May 26",    gradient:"gbyo0"},
+      { sym:"△",  cat:"TN",        catColor:"col-saffron",  word:"16cm in a day",     gradient:"gbo1" },
+      { sym:"≋",  cat:"rain",      catColor:"col-marigold", word:"south gets first",  gradient:"gbyo3"},
+      { sym:"◉",  cat:"Kerala",    catColor:"col-rose",     word:"CPI(M) lost",       gradient:"gbp0" },
+      { sym:"⟡",  cat:"DMK",       catColor:"col-saffron",  word:"vs Congress",       gradient:"gbo3" },
+      { sym:"⊘",  cat:"NEET",      catColor:"col-marigold", word:"paper leak probe",  gradient:"gbyo2"},
+      { sym:"⬡",  cat:"AP",        catColor:"col-rose",     word:"more babies? Naidu",gradient:"gbp3" },
+      { sym:"∞",  cat:"Karnataka", catColor:"col-saffron",  word:"squalls 70kmph",    gradient:"gbo2" },
+      { sym:"π",  cat:"Telangana", catColor:"col-marigold", word:"heatwave isolated", gradient:"gbyo4"},
+      { sym:"⟁",  cat:"tech",      catColor:"col-rose",     word:"Gates in AP",       gradient:"gbp1" },
+      { sym:"α",  cat:"Andhra",    catColor:"col-saffron",  word:"3rd child cash",    gradient:"gbo4" },
+      { sym:"Δ",  cat:"Goa",       catColor:"col-marigold", word:"monsoon loading",   gradient:"gbyo1"},
+      { sym:"⌬",  cat:"coast",     catColor:"col-rose",     word:"winds pick up",     gradient:"gbp4" },
+      { sym:"✦",  cat:"politics",  catColor:"col-saffron",  word:"south fights hard", gradient:"gbo0" },
+      { sym:"λ",  cat:"contrast",  catColor:"col-marigold", word:"north burns south", gradient:"gbyo3"},
+      { sym:"◈",  cat:"India",     catColor:"col-rose",     word:"two worlds one map",gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 12: Middle India — MP · Chhattisgarh · Odisha · Bihar · WB ── */
+  {
+    tag:         "Middle India · Ground Reality",
+    tagColor:    "tag-saffron",
+    date:        "22 May 2026",
+    teaser:      "Caught between baking heat and gathering storms.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-saffron",
+    ctaColor:    "cta-saffron",
+    reveal:      "<strong>Middle India is the collision zone.</strong> Khajuraho hit 47.4°C. Bihar is under orange rain alert. Odisha sees hot days and storm nights. West Bengal is getting squalls at 60kmph. The monsoon reaches here mid-June. Until then — endure.",
+    tiles: [
+      { sym:"☀",  cat:"MP",        catColor:"col-saffron",  word:"Khajuraho 47.4°C",  gradient:"gbo0" },
+      { sym:"△",  cat:"heat",      catColor:"col-marigold", word:"central belt bakes", gradient:"gbyo2"},
+      { sym:"∼",  cat:"Bihar",     catColor:"col-rose",     word:"orange rain alert", gradient:"gbp1" },
+      { sym:"≋",  cat:"Bengal",    catColor:"col-saffron",  word:"squalls 60kmph",    gradient:"gbo3" },
+      { sym:"⊘",  cat:"Odisha",    catColor:"col-marigold", word:"hot days, storm night",gradient:"gbyo4"},
+      { sym:"◈",  cat:"Jharkhand", catColor:"col-rose",     word:"in between worlds", gradient:"gbp3" },
+      { sym:"⌇",  cat:"hail",      catColor:"col-saffron",  word:"hailstorms possible",gradient:"gbo1"},
+      { sym:"∞",  cat:"Chhattisgarh",catColor:"col-marigold",word:"heatwave alert",   gradient:"gbyo0"},
+      { sym:"⬡",  cat:"monsoon",   catColor:"col-rose",     word:"June 10-18 here",   gradient:"gbp4" },
+      { sym:"π",  cat:"Vidarbha",  catColor:"col-saffron",  word:"severe heatwave",   gradient:"gbo4" },
+      { sym:"⟡",  cat:"water",     catColor:"col-marigold", word:"rivers watching",   gradient:"gbyo1"},
+      { sym:"λ",  cat:"farmers",   catColor:"col-rose",     word:"praying for rain",  gradient:"gbp0" },
+      { sym:"Σ",  cat:"power",     catColor:"col-saffron",  word:"cuts everywhere",   gradient:"gbo2" },
+      { sym:"Ω",  cat:"children",  catColor:"col-marigold", word:"schools half-shut", gradient:"gbyo3"},
+      { sym:"∴",  cat:"wait",      catColor:"col-rose",     word:"June can't come fast",gradient:"gbp2"},
+      { sym:"◉",  cat:"middle",    catColor:"col-saffron",  word:"India holds on",    gradient:"gbo0" },
+    ]
+  },
+
+  /* ── WALL 11: North-East India — Assam · Manipur · Nagaland · Arunachal ── */
+  {
+    tag:         "North-East · Ground Reality",
+    tagColor:    "tag-rose",
+    date:        "22 May 2026",
+    teaser:      "While the north bakes, the north-east braces.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-rose",
+    ctaColor:    "cta-rose",
+    reveal:      "<strong>The north-east is a different India entirely.</strong> Manipur's conflict deepens. Assam is on flood watch. Nagaland's highway has collapsed. Arunachal is under heavy rain alert. Eight states. Eight stories. Almost no headlines.",
+    tiles: [
+      { sym:"∼",  cat:"Assam",     catColor:"col-rose",     word:"flood watch on",    gradient:"gbp0" },
+      { sym:"⟁",  cat:"Manipur",   catColor:"col-saffron",  word:"conflict festers",  gradient:"gbo2" },
+      { sym:"◌",  cat:"Nagaland",  catColor:"col-marigold", word:"NH-2 collapsed",    gradient:"gbyo3"},
+      { sym:"△",  cat:"rain",      catColor:"col-rose",     word:"very heavy alerts", gradient:"gbp2" },
+      { sym:"⊘",  cat:"Arunachal", catColor:"col-saffron",  word:"landslide risk",    gradient:"gbo4" },
+      { sym:"⌇",  cat:"Meghalaya", catColor:"col-marigold", word:"thunder lightning", gradient:"gbyo1"},
+      { sym:"≋",  cat:"Brahmaputra",catColor:"col-rose",    word:"watching levels",   gradient:"gbp3" },
+      { sym:"⬡",  cat:"trucks",    catColor:"col-saffron",  word:"100+ stranded",     gradient:"gbo1" },
+      { sym:"π",  cat:"Tripura",   catColor:"col-marigold", word:"pre-monsoon active",gradient:"gbyo4"},
+      { sym:"✦",  cat:"Sikkim",    catColor:"col-rose",     word:"army post at risk",  gradient:"gbp1" },
+      { sym:"∞",  cat:"Mizoram",   catColor:"col-saffron",  word:"rain warnings live",gradient:"gbo3" },
+      { sym:"α",  cat:"conflict",  catColor:"col-marigold", word:"Manipur, 3 years",  gradient:"gbyo2"},
+      { sym:"λ",  cat:"relief",    catColor:"col-rose",     word:"camps being prepped",gradient:"gbp4"},
+      { sym:"Σ",  cat:"ignored",   catColor:"col-saffron",  word:"no prime time",     gradient:"gbo0" },
+      { sym:"⟰",  cat:"resilient", catColor:"col-marigold", word:"they always cope",  gradient:"gbyo0"},
+      { sym:"◉",  cat:"north-east",catColor:"col-rose",     word:"still standing",    gradient:"gbp2" },
+    ]
+  },
+
+  /* ── WALL 10: North India — Delhi · Punjab · Haryana · UP · Rajasthan ── */
+  {
+    tag:         "North India · Ground Reality",
+    tagColor:    "tag-saffron",
+    date:        "22 May 2026",
+    teaser:      "48°C. No rain. No end in sight.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-saffron",
+    ctaColor:    "cta-saffron",
+    reveal:      "<strong>Banda, UP recorded 48°C. 16 cities crossed 46°C in one day.</strong> Nights are 5°C above normal. The monsoon won't reach Delhi until June 25-30. That's 35 more days. The north is not just hot — it is exhausted.",
+    tiles: [
+      { sym:"☀",  cat:"UP",        catColor:"col-saffron",  word:"Banda hit 48°C",    gradient:"gbo0" },
+      { sym:"△",  cat:"cities",    catColor:"col-marigold", word:"16 above 46°C",     gradient:"gbyo2"},
+      { sym:"∅",  cat:"nights",    catColor:"col-rose",     word:"+5°C above normal", gradient:"gbp1" },
+      { sym:"⊘",  cat:"Delhi",     catColor:"col-saffron",  word:"45°C this week",    gradient:"gbo3" },
+      { sym:"≋",  cat:"Punjab",    catColor:"col-marigold", word:"yellow alert",      gradient:"gbyo0"},
+      { sym:"⌇",  cat:"Haryana",   catColor:"col-rose",     word:"no relief till 25", gradient:"gbp3" },
+      { sym:"◈",  cat:"Rajasthan", catColor:"col-saffron",  word:"worst hit, hottest",gradient:"gbo2" },
+      { sym:"∞",  cat:"winds",     catColor:"col-marigold", word:"from Balochistan",  gradient:"gbyo4"},
+      { sym:"π",  cat:"sleep",     catColor:"col-rose",     word:"impossible at night",gradient:"gbp0"},
+      { sym:"⟡",  cat:"monsoon",   catColor:"col-saffron",  word:"Delhi June 25-30",  gradient:"gbo4" },
+      { sym:"λ",  cat:"wait",      catColor:"col-marigold", word:"35 more days",      gradient:"gbyo1"},
+      { sym:"✦",  cat:"workers",   catColor:"col-rose",     word:"outdoors suffering", gradient:"gbp4"},
+      { sym:"Δ",  cat:"J&K",       catColor:"col-saffron",  word:"isolated rain",     gradient:"gbo1" },
+      { sym:"Σ",  cat:"HP",        catColor:"col-marigold", word:"hailstorms likely", gradient:"gbyo3"},
+      { sym:"⟰",  cat:"relief",    catColor:"col-rose",     word:"late May showers?", gradient:"gbp2" },
+      { sym:"◉",  cat:"north",     catColor:"col-saffron",  word:"India is baking",   gradient:"gbo0" },
+    ]
+  },
+
+
+
+  /* ── WALL 9: Modi × Italy + Tour Results ── */
+  {
+    tag:         "India · Italy · Tour 2026",
+    tagColor:    "tag-sage",
+    date:        "22 May 2026",
+    teaser:      "40 billion reasons it went well.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-sage",
+    ctaColor:    "cta-sage",
+    reveal:      "<strong>$40 billion. 5 nations. 6 days.</strong> Modi's May tour was India's biggest diplomatic sprint of 2026. Italy signed a Special Strategic Partnership. Companies worth $2.7 trillion showed up. India didn't just visit — it arrived.",
+    tiles: [
+      { sym:"◉",  cat:"Italy",    catColor:"col-sage",   word:"special partner",   gradient:"gblg0" },
+      { sym:"✦",  cat:"Meloni",   catColor:"col-gold",   word:"Modi meets",        gradient:"gby1"  },
+      { sym:"⬡",  cat:"IMEEC",    catColor:"col-forest", word:"corridor push",     gradient:"gbg3"  },
+      { sym:"Σ",  cat:"total",    catColor:"col-sage",   word:"$40B secured",      gradient:"gblg2" },
+      { sym:"∞",  cat:"firms",    catColor:"col-gold",   word:"$2.7T present",     gradient:"gby3"  },
+      { sym:"⟰",  cat:"tour",     catColor:"col-forest", word:"5 nations 6 days",  gradient:"gbg1"  },
+      { sym:"△",  cat:"energy",   catColor:"col-sage",   word:"supply locked",     gradient:"gblg4" },
+      { sym:"α",  cat:"tech",     catColor:"col-gold",   word:"deals signed",      gradient:"gby0"  },
+      { sym:"λ",  cat:"minerals", catColor:"col-forest", word:"critical pacts",    gradient:"gbg5"  },
+      { sym:"◈",  cat:"defence",  catColor:"col-sage",   word:"partnerships new",  gradient:"gblg1" },
+      { sym:"π",  cat:"invest",   catColor:"col-gold",   word:"wave incoming",     gradient:"gby2"  },
+      { sym:"⊞",  cat:"peace",    catColor:"col-forest", word:"West Asia push",    gradient:"gbg7"  },
+      { sym:"⟡",  cat:"India",    catColor:"col-sage",   word:"global player",     gradient:"gblg3" },
+      { sym:"Ω",  cat:"message",  catColor:"col-gold",   word:"we are here",       gradient:"gby4"  },
+      { sym:"∴",  cat:"next",     catColor:"col-forest", word:"who's next?",       gradient:"gbg9"  },
+      { sym:"⌬",  cat:"verdict",  catColor:"col-sage",   word:"India arrived",     gradient:"gblg0" },
+    ]
+  },
+
+  /* ── WALL 8: Modi × Netherlands + Sweden + Norway ── */
+  {
+    tag:         "India · Europe · May 2026",
+    tagColor:    "tag-gold",
+    date:        "21 May 2026",
+    teaser:      "From chips to ships. India came, signed, and stayed.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-gold",
+    ctaColor:    "cta-gold",
+    reveal:      "<strong>17 deals with the Netherlands. A new strategic partnership with Sweden. Norway — visited after 43 years.</strong> India signed across semiconductors, AI, green hydrogen, defence and climate. The Nordic world just got closer to New Delhi.",
+    tiles: [
+      { sym:"⬡",  cat:"NL",       catColor:"col-gold",   word:"17 deals signed",  gradient:"gby0"  },
+      { sym:"◈",  cat:"chips",    catColor:"col-forest", word:"semiconductors",    gradient:"gbg2"  },
+      { sym:"∼",  cat:"AI",       catColor:"col-gold",   word:"roadmap agreed",    gradient:"gby3"  },
+      { sym:"△",  cat:"hydrogen", catColor:"col-lime",   word:"green deal NL",     gradient:"gblg2" },
+      { sym:"⊕",  cat:"defence",  catColor:"col-gold",   word:"NL cooperation",   gradient:"gby1"  },
+      { sym:"✦",  cat:"Sweden",   catColor:"col-forest", word:"strategic partner", gradient:"gbg4"  },
+      { sym:"Σ",  cat:"Nordic",   catColor:"col-gold",   word:"summit 3rd ed.",    gradient:"gby4"  },
+      { sym:"⟁",  cat:"Norway",   catColor:"col-lime",   word:"43 year gap",       gradient:"gblg4" },
+      { sym:"α",  cat:"king",     catColor:"col-gold",   word:"royals met Modi",   gradient:"gby2"  },
+      { sym:"∞",  cat:"honours",  catColor:"col-forest", word:"awards given",      gradient:"gbg6"  },
+      { sym:"π",  cat:"climate",  catColor:"col-gold",   word:"cooperation yes",   gradient:"gby0"  },
+      { sym:"⌇",  cat:"trade",    catColor:"col-lime",   word:"expanding fast",    gradient:"gblg1" },
+      { sym:"◉",  cat:"water",    catColor:"col-gold",   word:"Dutch tech deal",   gradient:"gby3"  },
+      { sym:"λ",  cat:"startups", catColor:"col-forest", word:"innovation hubs",   gradient:"gbg8"  },
+      { sym:"⟡",  cat:"signals",  catColor:"col-gold",   word:"Europe trusts IN",  gradient:"gby1"  },
+      { sym:"Ω",  cat:"verdict",  catColor:"col-lime",   word:"chips + ships",     gradient:"gblg3" },
+    ]
+  },
+
+  /* ── WALL 7: Modi × UAE ── */
+  {
+    tag:         "India · UAE · May 2026",
+    tagColor:    "tag-deepgreen",
+    date:        "15 May 2026",
+    teaser:      "They call it brotherhood. $5 billion says so too.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-deepgreen",
+    ctaColor:    "cta-deepgreen",
+    reveal:      "<strong>UAE is India's third-largest trade partner.</strong> 4.5 million Indians call it home. Modi called MBZ his brother — and signed deals on LPG, crude storage, defence, space, AI and food safety. West Asia is burning. India chose diplomacy.",
+    tiles: [
+      { sym:"∞",  cat:"trade",    catColor:"col-forest", word:"partner no. 3",     gradient:"gbg0"  },
+      { sym:"△",  cat:"Indians",  catColor:"col-sage",   word:"4.5M live there",   gradient:"gblg0" },
+      { sym:"⊘",  cat:"LPG",      catColor:"col-gold",   word:"supply secured",    gradient:"gby2"  },
+      { sym:"◈",  cat:"crude",    catColor:"col-forest", word:"storage deal",      gradient:"gbg3"  },
+      { sym:"✦",  cat:"invest",   catColor:"col-sage",   word:"$5B from UAE",      gradient:"gblg2" },
+      { sym:"⟡",  cat:"defence",  catColor:"col-gold",   word:"strategic pact",    gradient:"gby0"  },
+      { sym:"α",  cat:"space",    catColor:"col-forest", word:"joint launch plan",  gradient:"gbg5"  },
+      { sym:"Δ",  cat:"Dholera",  catColor:"col-sage",   word:"UAE invests IN",    gradient:"gblg4" },
+      { sym:"λ",  cat:"HPCL",     catColor:"col-gold",   word:"Adnoc gas deal",    gradient:"gby3"  },
+      { sym:"⊞",  cat:"food",     catColor:"col-forest", word:"safety MoU",        gradient:"gbg7"  },
+      { sym:"π",  cat:"super",    catColor:"col-sage",   word:"computing tie",     gradient:"gblg1" },
+      { sym:"⌇",  cat:"peace",    catColor:"col-gold",   word:"India stands firm",  gradient:"gby1"  },
+      { sym:"≋",  cat:"attacks",  catColor:"col-forest", word:"UAE condemned",     gradient:"gbg2"  },
+      { sym:"◉",  cat:"MBZ",      catColor:"col-sage",   word:"Modi's brother",    gradient:"gblg3" },
+      { sym:"⟰",  cat:"visits",   catColor:"col-gold",   word:"7th time Modi",     gradient:"gby4"  },
+      { sym:"⊕",  cat:"verdict",  catColor:"col-forest", word:"Gulf holds firm",   gradient:"gbg9"  },
+    ]
+  },
+
+
+
+  /* ── WALL 6: Football Fever ── */
+  {
+    tag:         "Football · World Cup · 2026",
+    tagColor:    "tag-skyblue",
+    date:        "22 May 2026",
+    teaser:      "48 teams. 3 nations. 1 world holding its breath.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-skyblue",
+    ctaColor:    "cta-skyblue",
+    reveal:      "<strong>The World Cup kicks off 11 June 2026.</strong> USA, Canada and Mexico co-host for the first time. 48 teams. 104 matches. Mbappe, Yamal, Vinicius — and a planet that desperately needs something beautiful to watch.",
+    tiles: [
+      { sym:"⬡",  cat:"host",    catColor:"col-sky",    word:"USA Canada Mex",    gradient:"gbn0" },
+      { sym:"∞",  cat:"teams",   catColor:"col-aurora",  word:"48 nations",        gradient:"gbn5" },
+      { sym:"◈",  cat:"matches", catColor:"col-sky",    word:"104 games",          gradient:"gbn2" },
+      { sym:"✦",  cat:"opens",   catColor:"col-ocean",  word:"11 June 2026",       gradient:"gbn7" },
+      { sym:"△",  cat:"final",   catColor:"col-sky",    word:"19 July NJ",         gradient:"gbn3" },
+      { sym:"α",  cat:"star",    catColor:"col-aurora",  word:"Yamal, 18",         gradient:"gbn6" },
+      { sym:"Ω",  cat:"record",  catColor:"col-sky",    word:"biggest ever",       gradient:"gbn1" },
+      { sym:"⊕",  cat:"threat",  catColor:"col-ocean",  word:"Ebola shadow",       gradient:"gbn8" },
+      { sym:"π",  cat:"politics",catColor:"col-aurora",  word:"Trump vs FIFA",     gradient:"gbn4" },
+      { sym:"≋",  cat:"Iran",    catColor:"col-sky",    word:"may not play",       gradient:"gbn9" },
+      { sym:"⟡",  cat:"tickets", catColor:"col-ocean",  word:"unaffordable",       gradient:"gbn2" },
+      { sym:"∴",  cat:"Brazil",  catColor:"col-aurora",  word:"Ancelotti leads",  gradient:"gbn5" },
+      { sym:"λ",  cat:"England", catColor:"col-sky",    word:"squad confirmed",    gradient:"gbn0" },
+      { sym:"Δ",  cat:"Germany", catColor:"col-ocean",  word:"Neuer returns",      gradient:"gbn7" },
+      { sym:"◉",  cat:"world",   catColor:"col-aurora",  word:"needs this now",   gradient:"gbn3" },
+      { sym:"⟰",  cat:"kick off",catColor:"col-sky",    word:"20 days away",      gradient:"gbn6" },
+    ]
+  },
+
+  /* ── WALL 5: Africa Right Now ── */
+  {
+    tag:         "Africa · Crisis · 2026",
+    tagColor:    "tag-oceanblue",
+    date:        "21 May 2026",
+    teaser:      "A continent moves. The world barely notices.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-oceanblue",
+    ctaColor:    "cta-oceanblue",
+    reveal:      "<strong>Africa is not one story — it is fifty.</strong> Ebola in Congo and Uganda. Fuel riots in Kenya. Sudan still burning. Malawi's most expensive fuel on earth. Niger silencing the press. The continent is moving fast. The headlines are not keeping up.",
+    tiles: [
+      { sym:"◈",  cat:"health",  catColor:"col-ocean",  word:"Ebola returns",      gradient:"gbn1" },
+      { sym:"⊘",  cat:"Congo",   catColor:"col-sky",    word:"528 cases",          gradient:"gbn4" },
+      { sym:"△",  cat:"Kenya",   catColor:"col-aurora", word:"fuel riots",         gradient:"gbn8" },
+      { sym:"≋",  cat:"Sudan",   catColor:"col-ocean",  word:"war continues",      gradient:"gbn2" },
+      { sym:"∅",  cat:"Malawi",  catColor:"col-sky",    word:"$3.83 per litre",    gradient:"gbn6" },
+      { sym:"⟁",  cat:"Niger",   catColor:"col-aurora", word:"press banned",       gradient:"gbn0" },
+      { sym:"⌇",  cat:"IS",      catColor:"col-ocean",  word:"86% global share",   gradient:"gbn9" },
+      { sym:"∞",  cat:"Sahel",   catColor:"col-sky",    word:"spreading fast",     gradient:"gbn3" },
+      { sym:"Σ",  cat:"Somalia", catColor:"col-aurora", word:"election chaos",     gradient:"gbn7" },
+      { sym:"⊞",  cat:"Nigeria", catColor:"col-ocean",  word:"airstrikes probed",  gradient:"gbn5" },
+      { sym:"✦",  cat:"food",    catColor:"col-sky",    word:"2027 shortage?",     gradient:"gbn1" },
+      { sym:"γ",  cat:"S.Africa",catColor:"col-aurora", word:"inflation spikes",   gradient:"gbn4" },
+      { sym:"Δ",  cat:"justice", catColor:"col-ocean",  word:"Lumumba case ends",  gradient:"gbn8" },
+      { sym:"⌬",  cat:"UN",      catColor:"col-sky",    word:"Nairobi expands",    gradient:"gbn2" },
+      { sym:"λ",  cat:"data",    catColor:"col-aurora", word:"Cape Town fights",   gradient:"gbn6" },
+      { sym:"◉",  cat:"world",   catColor:"col-ocean",  word:"are you watching?",  gradient:"gbn0" },
+    ]
+  },
+
+  /* ── WALL 4: Global Gas Policy ── */
+  {
+    tag:         "Energy · Gas · 2026",
+    tagColor:    "tag-nightblue",
+    date:        "20 May 2026",
+    teaser:      "Something is running out. And it isn't time.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-nightblue",
+    ctaColor:    "cta-nightblue",
+    reveal:      "<strong>20% of global LNG supply vanished in weeks.</strong> The Strait of Hormuz closed. Qatar declared force majeure. Europe is entering summer with its lowest gas reserves since 2018. The IEA calls it the greatest energy security threat in history.",
+    tiles: [
+      { sym:"∼",  cat:"gas",     catColor:"col-night",  word:"20% LNG gone",       gradient:"gbn8" },
+      { sym:"⊘",  cat:"strait",  catColor:"col-ocean",  word:"Hormuz closed",      gradient:"gbn0" },
+      { sym:"◈",  cat:"Qatar",   catColor:"col-aurora", word:"force majeure",       gradient:"gbn5" },
+      { sym:"△",  cat:"price",   catColor:"col-night",  word:"highest since 23",   gradient:"gbn2" },
+      { sym:"∞",  cat:"supply",  catColor:"col-ocean",  word:"120bcm lost",        gradient:"gbn7" },
+      { sym:"⌇",  cat:"Europe",  catColor:"col-aurora", word:"lowest reserves",    gradient:"gbn3" },
+      { sym:"Σ",  cat:"IEA",     catColor:"col-night",  word:"worst ever crisis",  gradient:"gbn9" },
+      { sym:"⬡",  cat:"Qatar",   catColor:"col-ocean",  word:"17% capacity hit",   gradient:"gbn1" },
+      { sym:"⟡",  cat:"Asia",    catColor:"col-aurora", word:"competing for LNG",  gradient:"gbn6" },
+      { sym:"λ",  cat:"policy",  catColor:"col-night",  word:"coal switching back", gradient:"gbn4" },
+      { sym:"Ω",  cat:"delay",   catColor:"col-ocean",  word:"2 year setback",     gradient:"gbn8" },
+      { sym:"π",  cat:"Iran",    catColor:"col-aurora", word:"war caused this",    gradient:"gbn2" },
+      { sym:"⊞",  cat:"stocks",  catColor:"col-night",  word:"IEA releases oil",   gradient:"gbn5" },
+      { sym:"∴",  cat:"2030",    catColor:"col-ocean",  word:"tight until then",   gradient:"gbn0" },
+      { sym:"✦",  cat:"you",     catColor:"col-aurora", word:"heating bills?",     gradient:"gbn7" },
+      { sym:"◉",  cat:"ask",     catColor:"col-night",  word:"who profits?",       gradient:"gbn3" },
+    ]
+  },
+
+
+
+  /* ── WALL 3: India Heatwave ── */
+  {
+    tag:         "Heat · India · 2026",
+    tagColor:    "tag-orange",
+    date:        "22 May 2026",
+    teaser:      "Something is burning. And it isn't the news cycle.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-orange",
+    ctaColor:    "cta-orange",
+    reveal:      "<strong>India is cooking.</strong> Pre-monsoon temperatures crossed 48°C in parts of Rajasthan and UP. Heat waves now arrive earlier, stay longer, and kill more quietly than ever. The poor bear the most. The powerful barely notice.",
+    tiles: [
+      { sym:"☀",  cat:"temp",    catColor:"col-orange", word:"48°C recorded",     gradient:"gb5" },
+      { sym:"∅",  cat:"water",   catColor:"col-yellow", word:"reservoirs low",    gradient:"gb6" },
+      { sym:"⊘",  cat:"workers", catColor:"col-orange", word:"outdoor bans",      gradient:"gb1" },
+      { sym:"≋",  cat:"health",  catColor:"col-maroon", word:"heatstroke surge",  gradient:"gb4" },
+      { sym:"△",  cat:"power",   catColor:"col-orange", word:"grid overloaded",   gradient:"gb2" },
+      { sym:"◌",  cat:"cities",  catColor:"col-yellow", word:"Delhi, UP, Raj",    gradient:"gb8" },
+      { sym:"⌇",  cat:"timing",  catColor:"col-maroon", word:"2 weeks early",     gradient:"gb3" },
+      { sym:"Δ",  cat:"future",  catColor:"col-orange", word:"worse each year",   gradient:"gb9" },
+      { sym:"⟁",  cat:"poor",    catColor:"col-brown",  word:"most affected",     gradient:"gb0" },
+      { sym:"⊞",  cat:"policy",  catColor:"col-yellow", word:"action plans?",     gradient:"gb7" },
+      { sym:"◉",  cat:"sleep",   catColor:"col-orange", word:"nights not cool",   gradient:"gb5" },
+      { sym:"α",  cat:"science", catColor:"col-maroon", word:"climate link: yes", gradient:"gb1" },
+      { sym:"λ",  cat:"monsoon", catColor:"col-yellow", word:"still weeks away",  gradient:"gb3" },
+      { sym:"Σ",  cat:"deaths",  catColor:"col-brown",  word:"undercounted",      gradient:"gb2" },
+      { sym:"∞",  cat:"cycle",   catColor:"col-orange", word:"no end in sight",   gradient:"gb6" },
+      { sym:"✦",  cat:"ask",     catColor:"col-maroon", word:"who's responsible", gradient:"gb4" },
+    ]
+  },
+
+  /* ── WALL 2: AI Layoffs ── */
+  {
+    tag:         "Tech · AI · Layoffs",
+    tagColor:    "tag-maroon",
+    date:        "20 May 2026",
+    teaser:      "The robots are here. So are the pink slips.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-maroon",
+    ctaColor:    "cta-maroon",
+    reveal:      "<strong>AI didn't just take jobs. It took certainty.</strong> In 2025–26, over 200,000 tech workers were laid off globally — many replaced quietly by automation. Nobody called it a crisis. Everyone felt it.",
+    tiles: [
+      { sym:"◈",  cat:"who",     catColor:"col-maroon", word:"200k jobs gone",    gradient:"gb0" },
+      { sym:"⌘",  cat:"why",     catColor:"col-brown",  word:"AI, not market",    gradient:"gb8" },
+      { sym:"∞",  cat:"trend",   catColor:"col-maroon", word:"still ongoing",     gradient:"gb3" },
+      { sym:"⊕",  cat:"sector",  catColor:"col-orange", word:"media hit hard",    gradient:"gb1" },
+      { sym:"⬡",  cat:"tech",    catColor:"col-maroon", word:"Google, Meta, MS",  gradient:"gb6" },
+      { sym:"⟡",  cat:"models",  catColor:"col-yellow", word:"Claude, GPT, Gem",  gradient:"gb2" },
+      { sym:"≋",  cat:"roles",   catColor:"col-brown",  word:"writers, QA, ops",  gradient:"gb9" },
+      { sym:"π",  cat:"truth",   catColor:"col-orange", word:"not a blip",        gradient:"gb4" },
+      { sym:"γ",  cat:"India",   catColor:"col-yellow", word:"BPOs at risk",      gradient:"gb7" },
+      { sym:"Ω",  cat:"hype",    catColor:"col-maroon", word:"AGI sold it",       gradient:"gb0" },
+      { sym:"✶",  cat:"irony",   catColor:"col-brown",  word:"AI wrote the memo", gradient:"gb5" },
+      { sym:"⊻",  cat:"future",  catColor:"col-orange", word:"new jobs? maybe",   gradient:"gb3" },
+      { sym:"∴",  cat:"humans",  catColor:"col-yellow", word:"still needed",      gradient:"gb1" },
+      { sym:"⟰",  cat:"signal",  catColor:"col-maroon", word:"reskill or wait",   gradient:"gb8" },
+      { sym:"⊞",  cat:"brands",  catColor:"col-brown",  word:"pivoting fast",     gradient:"gb2" },
+      { sym:"◉",  cat:"you",     catColor:"col-orange", word:"what's your plan?", gradient:"gb6" },
+    ]
+  },
+
+  /* ── WALL 1: Nepal Climate ── */
+  {
+    tag:         "Climate · Nepal · 2026",
+    tagColor:    "tag-yellow",
+    date:        "18 May 2026",
+    teaser:      "Something is melting. Flip to find out what.",
+    hint:        "// flip every tile · reset to start over",
+    revealColor: "reveal-yellow",
+    ctaColor:    "cta-yellow",
+    reveal:      "<strong>Nepal emits 0.08% of global carbon. It bears 100% of the consequence.</strong> The glaciers are melting faster than the world is listening. 30% of Himalayan snow is already gone.",
+    tiles: [
+      { sym:"△",  cat:"climate",  catColor:"col-yellow", word:"glaciers melting",  gradient:"gb0" },
+      { sym:"∼",  cat:"water",    catColor:"col-maroon", word:"floods rising",     gradient:"gb3" },
+      { sym:"◌",  cat:"land",     catColor:"col-orange", word:"springs drying",    gradient:"gb1" },
+      { sym:"⌇",  cat:"rain",     catColor:"col-yellow", word:"monsoon broken",    gradient:"gb6" },
+      { sym:"⊘",  cat:"food",     catColor:"col-brown",  word:"crops failing",     gradient:"gb4" },
+      { sym:"↑",  cat:"temp",     catColor:"col-orange", word:"+0.7°c faster",     gradient:"gb2" },
+      { sym:"≋",  cat:"snow",     catColor:"col-maroon", word:"30% snow lost",     gradient:"gb8" },
+      { sym:"◈",  cat:"lakes",    catColor:"col-yellow", word:"glacial floods",    gradient:"gb5" },
+      { sym:"⟁",  cat:"people",   catColor:"col-orange", word:"forced to move",    gradient:"gb9" },
+      { sym:"∅",  cat:"justice",  catColor:"col-brown",  word:"0.08% emissions",   gradient:"gb0" },
+      { sym:"⌬",  cat:"damage",   catColor:"col-maroon", word:"$63m destroyed",    gradient:"gb7" },
+      { sym:"⟡",  cat:"record",   catColor:"col-yellow", word:"624mm in a day",    gradient:"gb3" },
+      { sym:"∞",  cat:"crisis",   catColor:"col-brown",  word:"no end in sight",   gradient:"gb1" },
+      { sym:"α",  cat:"policy",   catColor:"col-orange", word:"summits, no fix",   gradient:"gb4" },
+      { sym:"Δ",  cat:"future",   catColor:"col-maroon", word:"2045 net zero?",    gradient:"gb6" },
+      { sym:"◉",  cat:"world",    catColor:"col-brown",  word:"is anyone home?",   gradient:"gb2" },
+    ]
+  },
+
+];
+
+/* ── RENDERER ── */
+const feed = document.getElementById('feed');
+document.getElementById('wall-count').textContent = WALLS.length;
+
+WALLS.forEach((wall, wi) => {
+  const total = wall.tiles.length;
+  let flipped = 0;
+
+  const section = document.createElement('div');
+  section.className = 'wall';
+  section.innerHTML = `
+    <div class="wall-meta">
+      <span class="wall-tag ${wall.tagColor}">${wall.tag}</span>
+      <span class="wall-date">${wall.date}</span>
+    </div>
+    <p class="wall-teaser">${wall.teaser}</p>
+    <p class="wall-hint">${wall.hint}</p>
+    <div class="tile-grid" id="grid-${wi}"></div>
+    <div class="wall-bottom">
+      <div class="w-progress">revealed <b id="cnt-${wi}">0</b> / ${total}</div>
+      <button class="w-reset" id="rst-${wi}">reset</button>
+    </div>
+    <div class="w-reveal ${wall.revealColor}" id="rev-${wi}">
+      <p>${wall.reveal}</p>
+      <a href="https://eturivarsha.github.io/MPL/" target="_blank" class="${wall.ctaColor}">
+        build your presence with MPL →
+      </a>
+    </div>
+  `;
+
+  if (wi < WALLS.length - 1) {
+    const div = document.createElement('div');
+    div.className = 'wall-divider';
+    section.appendChild(div);
+  }
+
+  feed.appendChild(section);
+
+  const grid    = document.getElementById(`grid-${wi}`);
+  const counter = document.getElementById(`cnt-${wi}`);
+  const reveal  = document.getElementById(`rev-${wi}`);
+  const resetBtn= document.getElementById(`rst-${wi}`);
+
+  wall.tiles.forEach(t => {
+    const wrap = document.createElement('div');
+    wrap.className = 't-wrap';
+    wrap.setAttribute('aria-label', t.word);
+    wrap.innerHTML = `
+      <div class="t-inner">
+        <div class="t-front">
+          <div class="t-sym ${t.catColor}">${t.sym}</div>
+          <div class="t-cat ${t.catColor}">${t.cat}</div>
+        </div>
+        <div class="t-back ${t.gradient}">
+          <div class="t-dot"></div>
+          <div class="t-word">${t.word}</div>
+        </div>
+      </div>`;
+    wrap.addEventListener('click', () => {
+      if (wrap.classList.contains('flipped')) {
+        wrap.classList.remove('flipped');
+        flipped--;
+        counter.textContent = flipped;
+        reveal.style.display = 'none';
+      } else {
+        wrap.classList.add('flipped');
+        flipped++;
+        counter.textContent = flipped;
+        if (flipped === total) reveal.style.display = 'block';
+      }
+    });
+    grid.appendChild(wrap);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    grid.querySelectorAll('.t-wrap').forEach(w => w.classList.remove('flipped'));
+    flipped = 0;
+    counter.textContent = '0';
+    reveal.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>
